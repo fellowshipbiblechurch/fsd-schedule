@@ -1,4 +1,43 @@
 body {
   margin: 0;
-  background-color: #bada55;
+  padding: 0;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 5em auto 0;
+}
+
+.schedule {
+  width: 100%;
+  text-align: center;
+  color: #373737;
+  font: 16px/1.5 "Arimo", "Helvetica Neue", sans-serif;
+}
+
+.schedule a {
+  text-decoration: none;
+  color: #373737;
+}
+
+.cell__index {
+  padding: 10px 0;
+  color: #fff;
+  background-color: #b1b1b1;
+}
+
+.cell__class {
+  padding: 10px 0;
+}
+
+.cell__class--studio-a {
+  background-color: #a3d5d1;
+}
+
+.cell__class--studio-b {
+  background-color: #a3c6d5;
+}
+
+.cell__class--studio-c {
+  background-color: #afb8ce;
 }

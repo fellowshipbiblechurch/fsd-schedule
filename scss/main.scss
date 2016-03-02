@@ -1,6 +1,55 @@
-$badass: #bada55;
 
-body { 
-  margin: 0; 
-  background-color: $badass; 
+$color-text-base: #373737;
+$color-studio-a: #a3d5d1;
+$color-studio-b: #a3c6d5;
+$color-studio-c: #afb8ce;
+$color-white: #fff;
+$color-index: #b1b1b1;
+
+// $font-stack-sans-serif: "proxima-nova", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+$font-stack-sans-serif: 'Arimo', 'Helvetica Neue', sans-serif;
+
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper {
+	width: 80%;
+	margin: 5em auto 0;
+}
+
+.schedule {
+	width: 100%;
+	text-align: center;
+	color: $color-text-base;
+	font: 16px/1.5 $font-stack-sans-serif;
+	
+	a {
+		text-decoration: none;
+		color: $color-text-base;
+	}
+}
+
+.cell {
+	
+	&__index {
+	padding: 10px 0;
+		color: $color-white;
+		background-color: $color-index;
+	}
+
+	&__class {
+	padding: 10px 0;
+		&--studio-a {
+			background-color: $color-studio-a;
+		}
+		&--studio-b {
+			background-color: $color-studio-b;
+		}
+		&--studio-c {
+			background-color: $color-studio-c;
+		}
+	}
 }
