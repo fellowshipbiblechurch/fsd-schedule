@@ -1,43 +1,74 @@
 body {
   margin: 0;
   padding: 0;
+  font: 14px/1 "Arimo", "Helvetica Neue", sans-serif;
 }
 
 .wrapper {
-  width: 80%;
-  margin: 5em auto 0;
+  width: 90%;
+  margin: 5em auto;
 }
 
 .schedule {
   width: 100%;
   text-align: center;
   color: #373737;
-  font: 16px/1.5 "Arimo", "Helvetica Neue", sans-serif;
+}
+
+.schedule__day {
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .schedule a {
   text-decoration: none;
-  color: #373737;
+}
+
+.cell--blank {
+  background: #e4e4e4;
 }
 
 .cell__index {
+  width: 10%;
   padding: 10px 0;
   color: #fff;
   background-color: #b1b1b1;
 }
 
 .cell__class {
-  padding: 10px 0;
+  width: 30%;
 }
 
 .cell__class--studio-a {
   background-color: #a3d5d1;
 }
 
+.cell__class--studio-a a {
+  color: #4d8a85;
+}
+
 .cell__class--studio-b {
   background-color: #a3c6d5;
 }
 
+.cell__class--studio-b a {
+  color: #527f92;
+}
+
 .cell__class--studio-c {
   background-color: #afb8ce;
+}
+
+.cell__class--studio-c a {
+  color: #5f6c8d;
+}
+
+.class__title {
+  display: block;
+  text-transform: uppercase;
+  color: #373737;
+}
+
+.class__times {
+  display: block;
 }

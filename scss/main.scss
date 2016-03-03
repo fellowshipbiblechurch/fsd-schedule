@@ -1,8 +1,8 @@
 
 $color-text-base: #373737;
-$color-studio-a: #a3d5d1;
-$color-studio-b: #a3c6d5;
-$color-studio-c: #afb8ce;
+$color-bg-studio-a: #a3d5d1;
+$color-bg-studio-b: #a3c6d5;
+$color-bg-studio-c: #afb8ce;
 $color-white: #fff;
 $color-index: #b1b1b1;
 
@@ -13,43 +13,74 @@ $font-stack-sans-serif: 'Arimo', 'Helvetica Neue', sans-serif;
 body {
 	margin: 0;
 	padding: 0;
+	font: 14px/1 $font-stack-sans-serif;
 }
 
 .wrapper {
-	width: 80%;
-	margin: 5em auto 0;
+	width: 90%;
+	margin: 5em auto;
 }
 
 .schedule {
 	width: 100%;
 	text-align: center;
 	color: $color-text-base;
-	font: 16px/1.5 $font-stack-sans-serif;
+	
+	&__day {
+		text-align: center;
+		text-transform: uppercase;
+	}
 	
 	a {
 		text-decoration: none;
-		color: $color-text-base;
 	}
 }
 
 .cell {
 	
+	&--blank {
+		background: #e4e4e4;
+	}
+	
 	&__index {
-	padding: 10px 0;
+		width: 10%;
+		padding: 10px 0;
 		color: $color-white;
 		background-color: $color-index;
 	}
-
+	
 	&__class {
-	padding: 10px 0;
+		width: 30%;
+		
 		&--studio-a {
-			background-color: $color-studio-a;
+			background-color: $color-bg-studio-a;
+			
+			a {
+				color: #4d8a85;
+			}
 		}
 		&--studio-b {
-			background-color: $color-studio-b;
+			background-color: $color-bg-studio-b;
+			
+			a {
+				color: #527f92;
+			}
 		}
 		&--studio-c {
-			background-color: $color-studio-c;
+			background-color: $color-bg-studio-c;
+			
+			a { color: #5f6c8d; }
 		}
+	}
+}
+
+.class {
+	&__title {
+		display: block;
+		text-transform: uppercase;
+		color: #373737;
+	}
+	&__times {
+		display: block;
 	}
 }
