@@ -5,8 +5,6 @@ body {
 }
 
 .wrapper {
-  width: 80%;
-  margin: 5em auto 0;
   width: 90%;
   margin: 5em auto;
 }
@@ -33,7 +31,6 @@ body {
 }
 
 .cell__index {
-  padding: 10px 0;
   width: 10%;
   padding: 10px 0;
   color: #fff;
@@ -41,7 +38,6 @@ body {
 }
 
 .cell__class {
-  padding: 10px 0;
   width: 30%;
 }
 
