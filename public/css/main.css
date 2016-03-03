@@ -5,6 +5,8 @@ body {
 }
 
 .wrapper {
+  width: 80%;
+  margin: 5em auto 0;
   width: 90%;
   margin: 5em auto;
 }
@@ -13,6 +15,7 @@ body {
   width: 100%;
   text-align: center;
   color: #373737;
+  font: 16px/1.5 "Arimo", "Helvetica Neue", sans-serif;
 }
 
 .schedule__day {
@@ -22,6 +25,7 @@ body {
 
 .schedule a {
   text-decoration: none;
+  color: #373737;
 }
 
 .cell--blank {
@@ -29,6 +33,7 @@ body {
 }
 
 .cell__index {
+  padding: 10px 0;
   width: 10%;
   padding: 10px 0;
   color: #fff;
@@ -36,10 +41,12 @@ body {
 }
 
 .cell__class {
+  padding: 10px 0;
   width: 30%;
 }
 
 .cell__class--studio-a {
+  background-color: #a3d5d1;
   background-color: #a3d5d1;
 }
 
@@ -49,6 +56,7 @@ body {
 
 .cell__class--studio-b {
   background-color: #a3c6d5;
+  background-color: #a3c6d5;
 }
 
 .cell__class--studio-b a {
@@ -56,6 +64,7 @@ body {
 }
 
 .cell__class--studio-c {
+  background-color: #afb8ce;
   background-color: #afb8ce;
 }
 

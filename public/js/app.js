@@ -75,15 +75,9 @@ var createClassCells = function(day, currentTime) {
 	return cellHTML;
 }
 
-
-// The big cheese
 var buildSchedule = function(day) {
 	
-	var rowHTML	= '<tr>';
-			rowHTML += '<th class="cell__heading cell--blank">&nbsp;</td>';
-			rowHTML += '<th class="cell__heading">Studio A</td>';
-			rowHTML += '<th class="cell__heading">Studio B</td>';
-			rowHTML += '<th class="cell__heading">Studio C</td>';
+	var rowHTML	= '';
 	
 	for (var i=0; i < howManyRows(day); i++) {
 		
@@ -100,10 +94,6 @@ var buildSchedule = function(day) {
 }
 
 buildSchedule(monday);
-
-
-
-
 
 // Each day panel must be in carousel-like form
 
