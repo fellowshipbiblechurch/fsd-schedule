@@ -4,7 +4,7 @@
 
 
 // set earliest class start time as second row
-var setScheduleAlphaTime = function(day) {
+var getScheduleAlphaTime = function(day) {
 	var earliestStart = 1440;
 	// loop through classes in days
 	for (var i=0; i < day.length; i++) {
@@ -16,7 +16,7 @@ var setScheduleAlphaTime = function(day) {
 }
 
 // Set latest class start time as penultimate row
-var setScheduleOmegaTime = function(day) {
+var getScheduleOmegaTime = function(day) {
 	var latestEnd = 0;
 	// loop through classes in days
 	for (var i=0; i < day.length; i++) {
@@ -31,30 +31,49 @@ var setScheduleOmegaTime = function(day) {
 // Find out how many rows are needed to cover all classes in the day
 
 var howManyRows = function(day) {
-	var count = (setScheduleOmegaTime(day) - setScheduleAlphaTime(day));
+	var count = (getScheduleOmegaTime(day) - getScheduleAlphaTime(day));
 	return count / 15;
 }
 
 
-// Create index rows
+// Creating first and last rows dynamically
+
+var buildEmptyRow = function(type, day, indexCells, classCells) {
+	
+	var isAlphaRow = type === "alpha" ? true : false,
+			indexTime = '',
+			rowContent = '<tr>';
+	
+	indexTime = isAlphaRow ? getScheduleAlphaTime(day) : getScheduleOmegaTime(day);
+	
+	// make indexCells
+	for (var i=0; i < indexCells; i++) {
+		rowContent += '<td class="cell__index">' + indexTime + '</td>';
+	}
+	// make classCells
+	for (var i=0; i < classCells; i++) {
+		rowContent += '<td class="cell--blank">&nbsp;</td>';
+	}
+	
+	rowContent += '</tr>';
+	isAlphaRow ? $('.schedule__body').prepend(rowContent) : $('.schedule__body').append(rowContent);
+}
 
 
-
-
-// create the cells
-var createClassCells = function(day, currentTime) {
+// create the studio class cells
+var createClassCells = function(classes, currentTime) {
 	
 	// initialize empty cell content
 	var cellHTML = '';
 	
-	for (var i=0; i < day.length; i++) {
+	for (var i=0; i < classes.length; i++) {
 		
-		var studio = day[i].studio.toLowerCase(),
-				title = day[i].title,
-				link = day[i].link,
-				timeAlpha = day[i].alphaMinutesFull(),
-				timeOmega = day[i].omegaMinutesFull(),
-				duration = day[i].duration();
+		var studio = classes[i].studio.toLowerCase(),
+				title = classes[i].title,
+				link = classes[i].link,
+				timeAlpha = classes[i].alphaMinutesFull(),
+				timeOmega = classes[i].omegaMinutesFull(),
+				duration = classes[i].duration();
 		
 		if (timeAlpha === currentTime) {
 			
@@ -75,21 +94,29 @@ var createClassCells = function(day, currentTime) {
 	return cellHTML;
 }
 
+
 var buildSchedule = function(day) {
 	
+	buildEmptyRow("alpha", day, 1, 3);
+	
+	// initialize empty row content
 	var rowHTML	= '';
 	
-	for (var i=0; i < howManyRows(day); i++) {
+	for (var i=1; i < howManyRows(day); i++) {
 		
-		var indexTime = setScheduleAlphaTime(day) + 15*(i+1);
+		var indexTime = getScheduleAlphaTime(day) + 15*i;
 		
 		rowHTML += '<tr>';
 		rowHTML += '<td class="cell__index">' + indexTime + '</td>';
-		rowHTML += createClassCells(day, indexTime);
+		rowHTML += createClassCells(studioA, indexTime);
+		rowHTML += createClassCells(studioB, indexTime);
+		rowHTML += createClassCells(studioC, indexTime);
 		rowHTML += '</tr>';
-		
-		$('.schedule__body').html(rowHTML);
 	}
+		
+	$('.schedule__body').append(rowHTML);
+	
+	buildEmptyRow("omega", day, 1, 3);
 	
 }
 

@@ -32,7 +32,7 @@ var monday		= [],
 		friday		= [];
 
 monday = [
-	new danceClass("A", "Waltz The Matter With Me I", "/a", 12, 30, 13, 45),
+	new danceClass("A", "Waltz The Big Deal", "/a", 12, 30, 13, 45),
 	new danceClass("A", "Beebop XI", "/a", 14, 0, 15, 30),
 	new danceClass("B", "Advanced Polka", "/b", 11, 30, 12, 30),
 	new danceClass("B", "Beginner's Dougie", "/b", 13, 45, 16, 30),
@@ -81,27 +81,16 @@ function buildStudios(day) {
 	}
 }
 
-buildStudios(studioA);
-buildStudios(studioB);
-buildStudios(studioC);
+buildStudios(monday);
+
+/*
 
 var studios = {
-	monday: {
-		A: studioA,
-		B: studioB,
-		C: studioC
-	},
-	tuesday: {
-		A: studioA,
-		B: studioB,
-		C: studioC
-	},
-	wednesday: {
-		A: studioA,
-		B: studioB,
-		C: studioC
-	}
+	monday: buildStudios(monday),
+	tuesday: buildStudios(tuesday),
+	wednesday: buildStudios(wednesday)
 };
+*/
 
 
 var danceClasses = {
