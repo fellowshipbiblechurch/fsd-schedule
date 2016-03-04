@@ -61,66 +61,73 @@ var buildEmptyRow = function(type, day, indexCells, classCells) {
 
 
 // create the studio class cells
-var createClassCells = function(classes, currentTime) {
+var createClassCell = function(currentTime, studioArray) {
 	
-	// initialize empty cell content
-	var cellHTML = '';
+	// initialize cell as empty
+	var isEmpty = true,
+			cellHTML;
 	
-	for (var i=0; i < classes.length; i++) {
+	for (var i=0; i < studioArray.length; i++) {
 		
-		var studio = classes[i].studio.toLowerCase(),
-				title = classes[i].title,
-				link = classes[i].link,
-				timeAlpha = classes[i].alphaMinutesFull(),
-				timeOmega = classes[i].omegaMinutesFull(),
-				duration = classes[i].duration();
+		var studio = studioArray[i].studio.toLowerCase(),
+				title = studioArray[i].title,
+				link = studioArray[i].link,
+				timeAlpha = studioArray[i].alphaMinutesFull(),
+				timeOmega = studioArray[i].omegaMinutesFull(),
+				duration = studioArray[i].duration();
 		
-		if (timeAlpha === currentTime) {
+		if(timeAlpha == currentTime) {
+			isEmpty = false;
 			
-			cellHTML += '<td class="cell__class cell__class--studio-' + studio + '" rowspan=' + duration + '>';
+			cellHTML = '<td class="cell__class cell__class--studio-' + studio + '" rowspan=' + duration + '>';
 			cellHTML += '<a href="' + link + '">';
 			cellHTML += '<span class="class__title">' + title + '</span>';
 			cellHTML += '<span class="class__times">' + timeAlpha + '-' + timeOmega + '</span>';
 			cellHTML += '</a>';
 			cellHTML += '</td>';
 			break;
-
+			
 		} else if (timeAlpha < currentTime && timeOmega > currentTime) {
+			isEmpty = false;
 			break;
-		} else {
-			cellHTML = '<td class="cell--blank">&nbsp;</td>';
 		}
 	}
+		
+	if(isEmpty) {
+		cellHTML = '<td class="cell--blank">&nbsp;</td>';
+	}
+	
 	return cellHTML;
 }
 
 
+// Loop through number of rows in given day, creating cells
 var buildSchedule = function(day) {
-	
-	buildEmptyRow("alpha", day, 1, 3);
 	
 	// initialize empty row content
 	var rowHTML	= '';
 	
-	for (var i=1; i < howManyRows(day); i++) {
-		
+	for (var i=0; i < howManyRows(day); i++) {
 		var indexTime = getScheduleAlphaTime(day) + 15*i;
 		
 		rowHTML += '<tr>';
 		rowHTML += '<td class="cell__index">' + indexTime + '</td>';
-		rowHTML += createClassCells(studioA, indexTime);
-		rowHTML += createClassCells(studioB, indexTime);
-		rowHTML += createClassCells(studioC, indexTime);
+		rowHTML += createClassCell(indexTime, studioA);
+		rowHTML += createClassCell(indexTime, studioB);
+		rowHTML += createClassCell(indexTime, studioC);
 		rowHTML += '</tr>';
+// 	console.log(rowHTML);
 	}
-		
-	$('.schedule__body').append(rowHTML);
 	
-	buildEmptyRow("omega", day, 1, 3);
-	
+	$('.schedule__body').html(rowHTML);
 }
 
-buildSchedule(monday);
+buildSchedule(tuesday);
+
+
+
+
+
 
 // Each day panel must be in carousel-like form
 
