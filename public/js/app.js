@@ -79,7 +79,8 @@ var createClassCell = function(currentTime, studioArray) {
 		if(timeAlpha == currentTime) {
 			isEmpty = false;
 			
-			cellHTML = '<td class="cell__class cell__class--studio-' + studio + '" rowspan=' + duration + '>';
+			cellHTML = '<td class="cell__class cell__class--studio-' + studio;
+			cellHTML += '" rowspan=' + duration + '>';
 			cellHTML += '<a href="' + link + '">';
 			cellHTML += '<span class="class__title">' + title + '</span>';
 			cellHTML += '<span class="class__times">' + timeAlpha + '-' + timeOmega + '</span>';
@@ -116,7 +117,6 @@ var buildSchedule = function(day) {
 		rowHTML += createClassCell(indexTime, studioB);
 		rowHTML += createClassCell(indexTime, studioC);
 		rowHTML += '</tr>';
-// 	console.log(rowHTML);
 	}
 	
 	$('.schedule__body').html(rowHTML);

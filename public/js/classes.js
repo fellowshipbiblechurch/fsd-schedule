@@ -41,11 +41,11 @@ monday = [
 ];
 
 tuesday = [
-	new danceClass("A", "Advanced Richard Simmons", "/a", 14, 30, 15, 30),
-	new danceClass("A", "Lyrical Quilting III", "/a", 16, 0, 17, 30),
-	new danceClass("A", "What Da Foxtrot Say?", "/b", 18, 30, 20, 30),
-	new danceClass("B", "Ballet in Jesus' Time", "/b", 11, 45, 13, 15),
-	new danceClass("B", "Jazz Tap with Elton", "/b", 13, 45, 16, 30),
+	new danceClass("A", "Richard Simmons Rumba", "/a", 14, 30, 15, 30),
+	new danceClass("A", "Lyrical Quilting III", "/a", 15, 30, 17, 30),
+	new danceClass("A", "What Da Foxtrot Say?", "/b", 18, 0, 20, 30),
+	new danceClass("B", "Ballet in Jesus' Time", "/b", 13, 45, 14, 45),
+	new danceClass("B", "Jazz Tap with Elton", "/b", 14, 45, 16, 30),
 	new danceClass("C", "Touchdown Celebrations I", "/c", 16, 0, 18, 30)
 ];
 

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font: 12px/1 "Arimo", "Helvetica Neue", sans-serif;
+  font: 16px/1 "Arimo", "Helvetica Neue", sans-serif;
 }
 
 .wrapper {
@@ -9,16 +9,17 @@ body {
   margin: 5em auto;
 }
 
+#day {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2em;
+}
+
 .schedule {
   width: 100%;
   text-align: center;
   color: #373737;
-  font: 16px/1.5 "Arimo", "Helvetica Neue", sans-serif;
-}
-
-.schedule__day {
-  text-align: center;
-  text-transform: uppercase;
+  box-sizing: border-box;
 }
 
 .schedule a {
@@ -26,19 +27,59 @@ body {
   color: #373737;
 }
 
+tr:first-of-type td {
+  border-top: none;
+}
+
+tr:first-of-type td:last-of-type, tr:last-of-type td:last-of-type, .cell--blank:last-of-type, .cell__class:last-of-type {
+  border-right: none;
+}
+
+tr:last-of-type td {
+  border-bottom: none;
+}
+
+tr:first-of-type td:first-of-type, tr:last-of-type td:first-of-type, .cell__index {
+  border-left: none;
+}
+
+.cell--blank, .cell__heading, .cell__index, .cell__class {
+  padding: 10px;
+  border: 1px solid #eee;
+}
+
 .cell--blank {
   background: #e4e4e4;
 }
 
+.cell__heading {
+  font-size: 16px;
+  background-color: #555;
+  border-color: #7b7b7b;
+  text-transform: uppercase;
+}
+
+.cell__heading--studio-a {
+  color: #a3d5d1;
+}
+
+.cell__heading--studio-b {
+  color: #a3c6d5;
+}
+
+.cell__heading--studio-c {
+  color: #afb8ce;
+}
+
 .cell__index {
   width: 10%;
-  padding: 10px 0;
   color: #fff;
   background-color: #b1b1b1;
 }
 
 .cell__class {
   width: 30%;
+  vertical-align: middle;
 }
 
 .cell__class--studio-a {
@@ -70,10 +111,13 @@ body {
 
 .class__title {
   display: block;
-  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-size: 16px;
   color: #373737;
+  text-transform: uppercase;
 }
 
 .class__times {
   display: block;
+  font-size: 13px;
 }

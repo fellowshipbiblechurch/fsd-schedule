@@ -11,10 +11,12 @@ $color-white: #fff;
 $color-index: #b1b1b1;
 
 $font-stack-sans-serif: 'Arimo', 'Helvetica Neue', sans-serif;
+
+
 body {
 	margin: 0;
 	padding: 0;
-	font: 12px/1 $font-stack-sans-serif;
+	font: 16px/1 $font-stack-sans-serif;
 }
 
 .wrapper {
@@ -22,16 +24,17 @@ body {
 	margin: 5em auto;
 }
 
+#day {
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 2em;
+}
+
 .schedule {
 	width: 100%;
 	text-align: center;
 	color: $color-text-base;
-	font: 16px/1.5 $font-stack-sans-serif;
-	
-	&__day {
-		text-align: center;
-		text-transform: uppercase;
-	}
+	box-sizing: border-box;
 	
 	a {
 		text-decoration: none;
@@ -39,22 +42,85 @@ body {
 	}
 }
 
+%border-cancel-top { border-top: none; }
+%border-cancel-right { border-right: none; }
+%border-cancel-bottom { border-bottom: none; }
+%border-cancel-left { border-left: none; }
+
+tr:first-of-type td {
+	@extend %border-cancel-top;
+	
+	&:first-of-type {
+	@extend %border-cancel-left;
+	}
+	&:last-of-type {
+	@extend %border-cancel-right;
+	}
+}
+
+tr:last-of-type td {
+	@extend %border-cancel-bottom;
+	
+	&:first-of-type {
+	@extend %border-cancel-left;
+	}
+	&:last-of-type {
+	@extend %border-cancel-right;
+	}
+}
+
 .cell {
+	
+	&--blank,
+	&__heading,
+	&__index,
+	&__class {
+		padding: 10px;
+		border: 1px solid #eee;
+	}
 	
 	&--blank {
 		background: #e4e4e4;
+		
+		&:last-of-type {
+		@extend %border-cancel-right;
+		}
+	}
+	
+	&__heading {
+		font-size: 16px;
+		background-color: #555;
+		border-color: #7b7b7b;
+		text-transform: uppercase;
+		
+		&--studio-a {
+			color: $color-bg-studio-a;
+		}
+		
+		&--studio-b {
+			color: $color-bg-studio-b;
+		}
+		
+		&--studio-c {
+			color: $color-bg-studio-c;
+		}
 	}
 	
 	&__index {
 		width: 10%;
-		padding: 10px 0;
 		color: $color-white;
 		background-color: $color-index;
+		@extend %border-cancel-left;
 	}
 
 	
 	&__class {
 		width: 30%;
+		vertical-align: middle;
+		
+		&:last-of-type {
+		@extend %border-cancel-right;
+		}
 		
 		&--studio-a {
 			background-color: $color-studio-a;
@@ -80,10 +146,13 @@ body {
 .class {
 	&__title {
 		display: block;
-		text-transform: uppercase;
+		margin-bottom: 10px;
+		font-size: 16px;
 		color: #373737;
+		text-transform: uppercase;
 	}
 	&__times {
 		display: block;
+		font-size: 13px;
 	}
 }
