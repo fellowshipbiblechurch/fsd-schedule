@@ -91,6 +91,7 @@ var createClassCell = function(currentTime, studioArray) {
 			isEmpty = false;
 			
 			cellHTML = '<td class="cell__class cell__class--studio-' + studio;
+			cellHTML += studio === "c" ? " cell--border-cancel-right" : "";
 			cellHTML += '" rowspan=' + duration + '>';
 			cellHTML += '<a href="' + link + '">';
 			cellHTML += '<span class="class__title">' + title + '</span>';
@@ -106,7 +107,9 @@ var createClassCell = function(currentTime, studioArray) {
 	}
 		
 	if(isEmpty) {
-		cellHTML = '<td class="cell--blank">&nbsp;</td>';
+		cellHTML = '<td class="cell--blank';
+		cellHTML += studio === "c" ? " cell--border-cancel-right" : "";
+		cellHTML += '">&nbsp;</td>';
 	}
 	
 	return cellHTML;
@@ -157,25 +160,6 @@ $(".class__times").each(function() {
 	$(this).text(timeAlpha + "-" + timeOmega);
 	
 });
-
-
-
-/**
- *	Reset borders on all cells on edge of table
- */
- 
-$('.schedule__body tr').each(function() {
-	var numberOfCells = $(this).children().length;
-
-	if (numberOfCells === 2) {
-		$(this).addClass("hit");
-		
-		$(this).children().css({backgroundColor: "#515051"});
-	}
-});
-
-
-
 
 
 
