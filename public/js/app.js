@@ -1,12 +1,15 @@
+
+/* # Build day panel from class listings
+================================================== */
+
+
 /**
- *	Build day panel from class listings
+ *	Set earliest and latest possible class start times
  */
-
-
-// set earliest class start time as second row
+ 
 var getScheduleAlphaTime = function(day) {
 	var earliestStart = 1440;
-	// loop through classes in days
+	// loop through classes in day
 	for (var i=0; i < day.length; i++) {
 		day[i].alphaMinutesFull() < earliestStart ?
 		earliestStart = day[i].alphaMinutesFull() :
@@ -15,10 +18,9 @@ var getScheduleAlphaTime = function(day) {
 	return earliestStart -= 15;
 }
 
-// Set latest class start time as penultimate row
 var getScheduleOmegaTime = function(day) {
 	var latestEnd = 0;
-	// loop through classes in days
+	// loop through classes in day
 	for (var i=0; i < day.length; i++) {
 		day[i].omegaMinutesFull() > latestEnd ?
 		latestEnd = day[i].omegaMinutesFull() :
@@ -28,7 +30,37 @@ var getScheduleOmegaTime = function(day) {
 }
 
 
-// Find out how many rows are needed to cover all classes in the day
+/**
+ *	Reformat times from ugly minutes to standard time
+ */
+
+var prettifyTime = function(ugly) {
+	
+	// initialize all variables
+	var t,h,m,am,meridiem,hours,minutes,prettyTime;
+	
+	// convert to total hours, floating point
+	t = ugly / 60;
+	
+	// gather hour and minute integer values
+	h = Math.floor(t);
+	m = Math.round(Math.abs(h - t) * 60);
+	
+	// set meridiem as am or pm
+	meridiem = h >= 12 ? "pm" : "am";
+	
+	// building new, pretty string
+	hours = h <= 12 ? h : h - 12;
+	minutes = m < 10 ? "0" + m : m;
+	prettyTime = hours + ":" + minutes + meridiem;
+	
+	return prettyTime;
+}
+
+
+/**
+ *	Find out how many rows are needed to cover all classes in the day
+ */
 
 var howManyRows = function(day) {
 	var count = (getScheduleOmegaTime(day) - getScheduleAlphaTime(day));
@@ -36,7 +68,10 @@ var howManyRows = function(day) {
 }
 
 
-// create the studio class cells
+/**
+ *	Create the studio class cells
+ */
+
 var createClassCell = function(currentTime, studioArray) {
 	
 	// initialize cell as empty
@@ -59,7 +94,7 @@ var createClassCell = function(currentTime, studioArray) {
 			cellHTML += '" rowspan=' + duration + '>';
 			cellHTML += '<a href="' + link + '">';
 			cellHTML += '<span class="class__title">' + title + '</span>';
-			cellHTML += '<span class="class__times">' + timeAlpha + '-' + timeOmega + '</span>';
+			cellHTML += '<span class="class__times">' + prettifyTime(timeAlpha) + '-' + prettifyTime(timeOmega) + '</span>';
 			cellHTML += '</a>';
 			cellHTML += '</td>';
 			break;
@@ -78,7 +113,10 @@ var createClassCell = function(currentTime, studioArray) {
 }
 
 
-// Loop through number of rows in given day, creating cells
+/**
+ *	Loop through number of rows in given day, creating cells
+ */
+
 var buildSchedule = function(day) {
 	
 	// initialize empty row content
@@ -88,7 +126,7 @@ var buildSchedule = function(day) {
 		var indexTime = getScheduleAlphaTime(day) + 15*i;
 		
 		rowHTML += '<tr>';
-		rowHTML += '<td class="cell__index">' + indexTime + '</td>';
+		rowHTML += '<td class="cell__index">' + prettifyTime(indexTime) + '</td>';
 		rowHTML += createClassCell(indexTime, studioA);
 		rowHTML += createClassCell(indexTime, studioB);
 		rowHTML += createClassCell(indexTime, studioC);
@@ -96,19 +134,54 @@ var buildSchedule = function(day) {
 	}
 	
 	$('.schedule__body').html(rowHTML);
+	
 }
 
 buildSchedule(monday);
 
 
+/**
+ *	Reformat meridiems if the same
+ */
+
+$(".class__times").each(function() {
+	
+	var text = $(this).text();
+	var timeAlpha = text.split("-")[0];
+	var timeOmega = text.split("-")[1];
+	var meridiemAlpha = timeAlpha.split("am")[1] === "" ? "am" : "pm";
+	var meridiemOmega = timeOmega.split("am")[1] === "" ? "am" : "pm";
+	
+	meridiemAlpha === meridiemOmega ?
+	$(this).text(timeAlpha.split(meridiemAlpha)[0] + "-" + timeOmega) :
+	$(this).text(timeAlpha + "-" + timeOmega);
+	
+});
+
+
+
+/**
+ *	Reset borders on all cells on edge of table
+ */
+ 
+$('.schedule__body tr').each(function() {
+	var numberOfCells = $(this).children().length;
+
+	if (numberOfCells === 2) {
+		$(this).addClass("hit");
+		
+		$(this).children().css({backgroundColor: "#515051"});
+	}
+});
 
 
 
 
 
 
-
-// Each day panel must be in carousel-like form
+/**
+ *	Each day panel must be in carousel-like form
+ */
 
 
 

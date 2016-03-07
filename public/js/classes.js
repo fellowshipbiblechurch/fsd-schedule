@@ -32,7 +32,7 @@ var monday		= [],
 		friday		= [];
 
 monday = [
-	new danceClass("A", "Waltz The Big Deal", "/a", 12, 30, 13, 45),
+	new danceClass("A", "Waltz The Big Deal", "/a", 11, 30, 13, 45),
 	new danceClass("A", "Beebop XI", "/a", 14, 0, 15, 30),
 	new danceClass("B", "Advanced Polka", "/b", 12, 0, 13, 30),
 	new danceClass("B", "Beginner's Dougie", "/b", 13, 30, 15, 0),
