@@ -36,30 +36,6 @@ var howManyRows = function(day) {
 }
 
 
-// Creating first and last rows dynamically
-
-var buildEmptyRow = function(type, day, indexCells, classCells) {
-	
-	var isAlphaRow = type === "alpha" ? true : false,
-			indexTime = '',
-			rowContent = '<tr>';
-	
-	indexTime = isAlphaRow ? getScheduleAlphaTime(day) : getScheduleOmegaTime(day);
-	
-	// make indexCells
-	for (var i=0; i < indexCells; i++) {
-		rowContent += '<td class="cell__index">' + indexTime + '</td>';
-	}
-	// make classCells
-	for (var i=0; i < classCells; i++) {
-		rowContent += '<td class="cell--blank">&nbsp;</td>';
-	}
-	
-	rowContent += '</tr>';
-	isAlphaRow ? $('.schedule__body').prepend(rowContent) : $('.schedule__body').append(rowContent);
-}
-
-
 // create the studio class cells
 var createClassCell = function(currentTime, studioArray) {
 	
@@ -122,7 +98,10 @@ var buildSchedule = function(day) {
 	$('.schedule__body').html(rowHTML);
 }
 
-buildSchedule(tuesday);
+buildSchedule(monday);
+
+
+
 
 
 

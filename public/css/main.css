@@ -28,19 +28,19 @@ body {
 }
 
 tr:first-of-type td {
-  border-top: none;
+  border-top: none !important;
 }
 
-tr:first-of-type td:last-of-type, tr:last-of-type td:last-of-type, .cell--blank:last-of-type, .cell__class:last-of-type {
-  border-right: none;
+tr:first-of-type td:last-of-type, tr:last-of-type td:last-of-type {
+  border-right: none !important;
 }
 
 tr:last-of-type td {
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
 tr:first-of-type td:first-of-type, tr:last-of-type td:first-of-type, .cell__index {
-  border-left: none;
+  border-left: none !important;
 }
 
 .cell--blank, .cell__heading, .cell__index, .cell__class {
@@ -84,7 +84,6 @@ tr:first-of-type td:first-of-type, tr:last-of-type td:first-of-type, .cell__inde
 
 .cell__class--studio-a {
   background-color: #a3d5d1;
-  background-color: #a3d5d1;
 }
 
 .cell__class--studio-a a {
@@ -93,7 +92,6 @@ tr:first-of-type td:first-of-type, tr:last-of-type td:first-of-type, .cell__inde
 
 .cell__class--studio-b {
   background-color: #a3c6d5;
-  background-color: #a3c6d5;
 }
 
 .cell__class--studio-b a {
@@ -101,7 +99,6 @@ tr:first-of-type td:first-of-type, tr:last-of-type td:first-of-type, .cell__inde
 }
 
 .cell__class--studio-c {
-  background-color: #afb8ce;
   background-color: #afb8ce;
 }
 

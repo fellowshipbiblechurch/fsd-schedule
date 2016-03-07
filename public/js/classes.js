@@ -81,7 +81,7 @@ function buildStudios(day) {
 	}
 }
 
-buildStudios(tuesday);
+buildStudios(monday);
 
 /*
 
