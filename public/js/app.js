@@ -140,6 +140,7 @@ var buildSchedule = function(day) {
 	
 }
 
+buildStudios(monday);
 buildSchedule(monday);
 
 

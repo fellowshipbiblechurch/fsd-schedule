@@ -81,17 +81,6 @@ function buildStudios(day) {
 	}
 }
 
-buildStudios(monday);
-
-/*
-
-var studios = {
-	monday: buildStudios(monday),
-	tuesday: buildStudios(tuesday),
-	wednesday: buildStudios(wednesday)
-};
-*/
-
 
 var danceClasses = {
 	mon: monday,

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font: 16px/1 "Arimo", "Helvetica Neue", sans-serif;
+  font: 16px/1 "Proxima Nova", "Helvetica Neue", sans-serif;
 }
 
 .wrapper {
@@ -43,7 +43,7 @@ body {
 
 #day .day__name {
   width: 32%;
-  font-size: 2em;
+  font-size: 1.9em;
 }
 
 .schedule {
