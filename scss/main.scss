@@ -7,13 +7,20 @@ $color-bg-studio-c: #afb8ce;
 $color-white: #fff;
 $color-index: #b1b1b1;
 
+$padding-cell: 12px 0;
+
+$font-size-base: 16px;
+$font-size-heading: 28px;
+$font-size-large: 16px;
+$font-size-small: 13px;
 $font-stack-sans-serif: 'Proxima Nova', 'Helvetica Neue', sans-serif;
 
+$transition-fast: .1s ease-out;
 
 body {
 	margin: 0;
 	padding: 0;
-	font: 16px/1 $font-stack-sans-serif;
+	font: $font-size-base/1 $font-stack-sans-serif;
 }
 
 .wrapper {
@@ -43,53 +50,33 @@ body {
 		
 		&__prev,
 		&__next {
-			width: 50px;
-			height: 50px;
+			width: 30px;
+			height: 30px;
 			cursor: pointer;
 			padding: 0;
-			background-size: 16px 27px;
+			background-size: 50%;
 			text-indent: -9999px;
 		}
 		
 		&__name {
-			width: 32%;
-			font-size: 1.9em;
+			width: 20%;
+			font-size: $font-size-heading;
+			color: #555;
 		}
 	}
 }
 
 .schedule {
 	width: 100%;
+	max-width: 790px;
+	margin: 0 auto;
 	text-align: center;
 	color: $color-text-base;
-	box-sizing: border-box;
 	
 	a {
 		text-decoration: none;
 		color: $color-text-base;
 	}
-}
-
-%border-cancel-top { border-top: none !important; }
-%border-cancel-right { border-right: none !important; }
-%border-cancel-bottom { border-bottom: none !important; }
-%border-cancel-left { border-left: none !important; }
-
-tr:first-of-type:last-of-type td[class^="cell"] {
-	@extend %border-cancel-top;
-}
-
-tr:first-of-type td[class^="cell"] {
-	
-	&:first-of-type { @extend %border-cancel-left; }
-	&:last-of-type { @extend %border-cancel-right; }
-}
-
-tr:last-of-type td[class^="cell"] {
-	@extend %border-cancel-bottom;
-	
-	&:first-of-type { @extend %border-cancel-left; }
-	&:last-of-type { @extend %border-cancel-right; }
 }
 
 .cell {
@@ -98,23 +85,18 @@ tr:last-of-type td[class^="cell"] {
 	&__heading,
 	&__index,
 	&__class {
-		padding: 8px;
+		padding: $padding-cell;
 		border: 1px solid #eee;
+		font-size: $font-size-small;
+		letter-spacing: 1.5px;
 	}
 	
 	&--blank {
 		background: #e4e4e4;
-		
-/*
-		.cell__class + &:last-of-type { @extend %border-cancel-right; }
-		.cell__class + & + &:last-of-type { @extend %border-cancel-right; }
-		.cell__index + &:last-of-type { @extend %border-cancel-right; }
-*/
-
 	}
 	
 	&__heading {
-		font-size: 16px;
+		font-size: $font-size-large;
 		background-color: #555;
 		border-color: #7b7b7b;
 		text-transform: uppercase;
@@ -131,42 +113,79 @@ tr:last-of-type td[class^="cell"] {
 		@extend %border-cancel-left;
 	}
 	
-	
 	&__class {
 		width: 30%;
-		vertical-align: middle;
-				
-		&--studio-a {
-			background-color: $color-bg-studio-a;
-			
-			a { color: #4d8a85; }
+		padding: 0;
+		vertical-align: top;
+		transition: -webkit-transform $transition-fast,
+								transform $transition-fast,
+								box-shadow $transition-fast,
+								border $transition-fast;
+		
+		&:hover {
+			-webkit-transform: scale(1.01);
+			transform: scale(1.014,1.01);
+			box-shadow: 0 2px 7px -1px rgba(0,0,0,.45);
+			border: 1px solid rgba(255,255,255,.85) !important;
 		}
 		
-		&--studio-b {
-			background-color: $color-bg-studio-b;
-			
-			a { color: #527f92; }
-		}
+		&--studio-a { background-color: $color-bg-studio-a; }
+		&--studio-b { background-color: $color-bg-studio-b; }
+		&--studio-c { background-color: $color-bg-studio-c; }
 		
-		&--studio-c {
-			background-color: $color-bg-studio-c;
-			
-			a { color: #5f6c8d; }
+		a {
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+			padding: $padding-cell;
 		}
 	}
 }
 
 .class {
-	&__title {
+	&__title,
+	&__times {
 		display: block;
+		font-size: $font-size-small;
+	}
+	
+	&__title {
 		margin-bottom: 10px;
-		font-size: 16px;
+		font-weight: bold;
 		color: #373737;
 		text-transform: uppercase;
 	}
+	
 	&__times {
-		display: block;
-		font-size: 13px;
+		[class*="--studio-a"] & { color: #4d8a85; }
+		[class*="--studio-b"] & { color: #527f92; }
+		[class*="--studio-c"] & { color: #5f6c8d; }
+	}
+}
+
+%border-cancel-top { border-top: none !important; }
+%border-cancel-right { border-right: none !important; }
+%border-cancel-bottom { border-bottom: none !important; }
+%border-cancel-left { border-left: none !important; }
+
+td[class^="cell"] {
+	
+	tr:first-of-type:last-of-type & {
+		@extend %border-cancel-top;
+	}
+	
+	tr:first-of-type & {
+		border-top-width: 2px;
+		
+		&:first-of-type { @extend %border-cancel-left; }
+		&:last-of-type { @extend %border-cancel-right; }
+	}
+	
+	tr:last-of-type & {
+		@extend %border-cancel-bottom;
+		
+		&:first-of-type { @extend %border-cancel-left; }
+		&:last-of-type { @extend %border-cancel-right; }
 	}
 }
 
