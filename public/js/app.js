@@ -137,6 +137,7 @@ var buildSchedule = function(day) {
 		rowHTML += '</tr>';
 	}
 	
+// 	return rowHTML;
 	$('.schedule__body').html(rowHTML);
 }
 
@@ -183,15 +184,17 @@ var dayCurrentIndex,
 
 dayCurrent = $('.day__name').text();
 
+
 // based on day, find index
 for (var i=0; i < 5; i++) {
 	if(dayCurrent === days[i][0].day) {
 		dayCurrentIndex = i;
+		console.log(dayCurrentIndex);
 	}
 }
 
-dayPrevIndex = dayCurrentIndex - 1;
-dayNextIndex = dayCurrentIndex + 1;
+dayPrevIndex = dayPrev === undefined ? dayCurrentIndex : dayCurrentIndex - 1;
+dayNextIndex = dayNext === undefined ? dayCurrentIndex : dayCurrentIndex + 1;
 dayPrev = days[dayPrevIndex][0].day;
 dayNext = days[dayNextIndex][0].day;
 
@@ -203,21 +206,19 @@ function updateTitleAttributes() {
 console.log(dayPrevIndex);
 updateTitleAttributes();
 
-if(dayPrev !== undefined) {
-	console.log("Yesterday is Monday");
+/*
+if(dayPrev === undefined) {
+	console.log("Today is " + dayPrev);
 	$('#dayPrev').removeClass('day__cycle--hidden');
 } else {
+	console.log("Yesterday is not in the schedule");
 	$('#dayPrev').addClass('day__cycle--hidden');
 }
-
+*/
 
 
 
 // Set click event to cycle through days
-/*
-var buttons = document.getElementsByClassName("day__cycle");
-buttons.addEventListener("click");
-*/
 
 $('.day__cycle').on("click", function(e){
 	
@@ -240,17 +241,25 @@ $('.day__cycle').on("click", function(e){
 	dayNext = days[dayNextIndex][0].day;
 	
 	// Update Current Day Text & id
-	$('.day__name')
-		.text(dayCurrent)
-		.attr("id",dayCurrent.toLowerCase());
+	$('.day__name').text(dayCurrent);
 	
 	// build schedule for dayNext or dayPrev
 	newDay = isPrev ? days[dayPrevIndex] : days[dayNextIndex];
 	
-	buildSchedule(newDay);	
+	buildSchedule(newDay);
 });
 
-// $('.day__cycle').trigger("click");
+
+
+
+// $('#monday').html(buildSchedule(monday));
+
+
+
+
+
+
+
 
 
 
