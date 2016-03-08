@@ -214,7 +214,12 @@ if(dayPrev !== undefined) {
 
 
 // Set click event to cycle through days
-$('.day__cycle').click(function(e){
+/*
+var buttons = document.getElementsByClassName("day__cycle");
+buttons.addEventListener("click");
+*/
+
+$('.day__cycle').on("click", function(e){
 	
 	var newDay,
 			isPrev,
@@ -234,17 +239,18 @@ $('.day__cycle').click(function(e){
 	dayPrev = days[dayPrevIndex][0].day;
 	dayNext = days[dayNextIndex][0].day;
 	
-	// Update Current Day Text
-	$('.day__name').text(dayCurrent).attr("id",dayCurrent.toLowerCase());
+	// Update Current Day Text & id
+	$('.day__name')
+		.text(dayCurrent)
+		.attr("id",dayCurrent.toLowerCase());
 	
-	// build schedule for dayNext or dayPrev	
+	// build schedule for dayNext or dayPrev
 	newDay = isPrev ? days[dayPrevIndex] : days[dayNextIndex];
 	
-	buildSchedule(newDay);
-	
+	buildSchedule(newDay);	
 });
 
-
+// $('.day__cycle').trigger("click");
 
 
 
