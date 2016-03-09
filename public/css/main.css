@@ -60,8 +60,13 @@ body {
   color: #373737;
 }
 
+.schedule__studios {
+  width: 100%;
+}
+
 .schedule__panel {
   position: absolute;
+  width: 100%;
   opacity: 0;
   visibility: hidden;
 }

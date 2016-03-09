@@ -78,8 +78,13 @@ body {
 	text-align: center;
 	color: $color-text-base;
 	
+	&__studios {
+		width: 100%;
+	}
+	
 	&__panel {
 		position: absolute;
+		width: 100%;
 		opacity: 0;
 		visibility: hidden;
 		
