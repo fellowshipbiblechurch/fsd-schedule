@@ -47,7 +47,7 @@ body {
   color: #555;
 }
 
-#day .day__cycle--hidden {
+#day .day__change--hidden {
   opacity: 0;
 }
 

@@ -148,9 +148,11 @@ function loadTodaysSchedule() {
 	var todayStr = today[0].day;
 	$('.day__name').text(todayStr).attr("id",todayStr.toLowerCase());
 	buildSchedule(today);
+	// need to account for sunday and saturday
 }
 
-loadTodaysSchedule();
+// loadTodaysSchedule();
+buildSchedule(wednesday);
 
 /**
  *	Reformat meridiems if the same
@@ -189,7 +191,6 @@ dayCurrent = $('.day__name').text();
 for (var i=0; i < 5; i++) {
 	if(dayCurrent === days[i][0].day) {
 		dayCurrentIndex = i;
-		console.log(dayCurrentIndex);
 	}
 }
 
@@ -203,24 +204,28 @@ function updateTitleAttributes() {
 	$('.day__next').attr("title","View " + dayNext + "'s Classes");
 }
 
-console.log(dayPrevIndex);
 updateTitleAttributes();
 
 /*
 if(dayPrev === undefined) {
 	console.log("Today is " + dayPrev);
-	$('#dayPrev').removeClass('day__cycle--hidden');
+	$('#dayPrev').removeClass('day__change--hidden');
 } else {
 	console.log("Yesterday is not in the schedule");
-	$('#dayPrev').addClass('day__cycle--hidden');
+	$('#dayPrev').addClass('day__change--hidden');
 }
 */
 
-
+console.log("dayCurrentIndex = " + dayCurrentIndex);
+console.log("dayPrevIndex = " + dayPrevIndex);
+console.log("dayNextIndex = " + dayNextIndex);
+console.log("dayCurrent = " + dayCurrent);
+console.log("dayPrev = " + dayPrev);
+console.log("dayNext = " + dayNext);
 
 // Set click event to cycle through days
 
-$('.day__cycle').on("click", function(e){
+$('.day__change').on("click", function(e){
 	
 	var newDay,
 			isPrev,
@@ -237,6 +242,8 @@ $('.day__cycle').on("click", function(e){
 	dayNextIndex = dayCurrentIndex + 1;
 	
 	dayCurrent = days[dayCurrentIndex][0].day;
+	
+	if (dayPrevIndex)
 	dayPrev = days[dayPrevIndex][0].day;
 	dayNext = days[dayNextIndex][0].day;
 	
