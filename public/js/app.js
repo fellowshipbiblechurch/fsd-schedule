@@ -137,8 +137,8 @@ var buildSchedule = function(day) {
 		rowHTML += '</tr>';
 	}
 	
-// 	return rowHTML;
-	$('.schedule__body').html(rowHTML);
+	return rowHTML;
+// 	$('.schedule__body').html(rowHTML);
 }
 
 function loadTodaysSchedule() {
@@ -152,7 +152,7 @@ function loadTodaysSchedule() {
 }
 
 // loadTodaysSchedule();
-buildSchedule(wednesday);
+// buildSchedule(tuesday);
 
 /**
  *	Reformat meridiems if the same
@@ -177,27 +177,64 @@ $(".class__times").each(function() {
  *	Each day panel must be in carousel-like form
  */
 
-var dayCurrentIndex,
+var dayCurrIndex,
 		dayPrevIndex,
 		dayNextIndex,
-		dayCurrent,
+		dayCurr,
 		dayPrev,
-		dayNext;
+		dayNext,
+		$dayName = $('.day__name');
 
-dayCurrent = $('.day__name').text();
+// get today to work from (commented out for static dev)
+/*
+(function() {
+	var d = new Date();
+	var n = d.getDay();
+	var today = days[n - 1];
+	var todayStr = today[0].day;
+	$dayName.text(todayStr).attr("id",todayStr.toLowerCase());
+})();
+*/
 
+dayCurr = $dayName.text();
 
-// based on day, find index
-for (var i=0; i < 5; i++) {
-	if(dayCurrent === days[i][0].day) {
-		dayCurrentIndex = i;
+// find indeces of yesterday, today and tomorrow 
+for (var i=0; i < days.length; i++) {
+	if(dayCurr === days[i][0].day) {
+		dayPrevIndex = i - 1;
+		dayCurrIndex = i;
+		dayNextIndex = i + 1;
+		break;
 	}
 }
 
-dayPrevIndex = dayPrev === undefined ? dayCurrentIndex : dayCurrentIndex - 1;
-dayNextIndex = dayNext === undefined ? dayCurrentIndex : dayCurrentIndex + 1;
-dayPrev = days[dayPrevIndex][0].day;
-dayNext = days[dayNextIndex][0].day;
+function updateNeighbors() {
+	
+	// if dayCurr = Monday, adjust indeces
+	dayPrevIndex =	dayPrevIndex === -1 ?
+									dayPrevIndex += 5 :
+									dayPrevIndex;
+									
+	dayPrev = days[dayPrevIndex][0].day;
+	
+	// if dayCurr = Friday, adjust indeces
+	dayNextIndex =	dayNextIndex === 5 ?
+									dayNextIndex -= 5 :
+									dayNextIndex;
+									
+	dayNext = days[dayNextIndex][0].day;
+	
+/*
+	console.log("dayPrevIndex = " + dayPrevIndex);
+	console.log("dayCurrIndex = " + dayCurrIndex);
+	console.log("dayNextIndex = " + dayNextIndex);
+	console.log("dayPrev = " + dayPrev);
+	console.log("dayCurr = " + dayCurr);
+	console.log("dayNext = " + dayNext);
+*/
+}
+
+updateNeighbors();
 
 function updateTitleAttributes() {
 	$('.day__prev').attr("title","View " + dayPrev + "'s Classes");
@@ -206,25 +243,32 @@ function updateTitleAttributes() {
 
 updateTitleAttributes();
 
-/*
-if(dayPrev === undefined) {
-	console.log("Today is " + dayPrev);
-	$('#dayPrev').removeClass('day__change--hidden');
-} else {
-	console.log("Yesterday is not in the schedule");
-	$('#dayPrev').addClass('day__change--hidden');
-}
-*/
 
-console.log("dayCurrentIndex = " + dayCurrentIndex);
-console.log("dayPrevIndex = " + dayPrevIndex);
-console.log("dayNextIndex = " + dayNextIndex);
-console.log("dayCurrent = " + dayCurrent);
-console.log("dayPrev = " + dayPrev);
-console.log("dayNext = " + dayNext);
+// loop through days array and build schedule in respective panel
+
+function initializePanels() {
+	
+	var dayArray, dayName, panelId;
+			
+	for (var i=0; i < days.length; i++) {
+		
+		dayArray = days[i];
+		dayName = dayArray[0].day.toLowerCase();
+		panelId = "#" + dayName;
+		
+		$(panelId).html(buildSchedule(dayArray));
+	}
+
+}
+
+initializePanels();
+
+
+
 
 // Set click event to cycle through days
 
+/*
 $('.day__change').on("click", function(e){
 	
 	var newDay,
@@ -236,30 +280,30 @@ $('.day__change').on("click", function(e){
 	isNext = isPrev ? false : true;
 	
 	// set new current day index based on click direction
-	isPrev ? dayCurrentIndex -= 1 : dayCurrentIndex += 1;
+	isPrev ? dayCurrIndex -= 1 : dayCurrIndex += 1;
 	
-	dayPrevIndex = dayCurrentIndex - 1;
-	dayNextIndex = dayCurrentIndex + 1;
+// 	updateNeighbors();
+	dayPrevIndex = dayCurrIndex - 1;
+	dayNextIndex = dayCurrIndex + 1;
 	
-	dayCurrent = days[dayCurrentIndex][0].day;
+	dayCurr = days[dayCurrIndex][0].day;
 	
 	if (dayPrevIndex)
 	dayPrev = days[dayPrevIndex][0].day;
 	dayNext = days[dayNextIndex][0].day;
 	
 	// Update Current Day Text & id
-	$('.day__name').text(dayCurrent);
+	$('.day__name').text(dayCurr);
 	
 	// build schedule for dayNext or dayPrev
 	newDay = isPrev ? days[dayPrevIndex] : days[dayNextIndex];
 	
 	buildSchedule(newDay);
+	
 });
+*/
 
 
-
-
-// $('#monday').html(buildSchedule(monday));
 
 
 

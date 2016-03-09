@@ -52,11 +52,23 @@ body {
 }
 
 .schedule {
+  position: relative;
   width: 100%;
   max-width: 790px;
   margin: 0 auto;
   text-align: center;
   color: #373737;
+}
+
+.schedule__panel {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.schedule__panel--active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .schedule a {

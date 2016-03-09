@@ -71,11 +71,23 @@ body {
 }
 
 .schedule {
+	position: relative;
 	width: 100%;
 	max-width: 790px;
 	margin: 0 auto;
 	text-align: center;
 	color: $color-text-base;
+	
+	&__panel {
+		position: absolute;
+		opacity: 0;
+		visibility: hidden;
+		
+		&--active {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 	
 	a {
 		text-decoration: none;
