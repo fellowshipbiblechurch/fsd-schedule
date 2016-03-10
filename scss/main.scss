@@ -17,6 +17,8 @@ $font-stack-sans-serif: 'Proxima Nova', 'Helvetica Neue', sans-serif;
 
 $transition-fast: .1s ease-out;
 
+$width-panel-max: 790px;
+
 body {
 	margin: 0;
 	padding: 0;
@@ -75,11 +77,11 @@ body {
 	&__wrapper {
 		position: relative;
 		width: 100%;
-		max-width: 790px;
-		margin: 0 auto;
+		max-width: $width-panel-max;
+		margin: 3em auto;
 		text-align: center;
 		color: $color-text-base;
-		overflow-x: visible;
+		overflow-x: hidden;
 	}
 	
 	&__studios {
@@ -87,8 +89,10 @@ body {
 	}
 	
 	&__panels {
-		position: absolute;
-		width: 100%;
+		position: relative;
+		width: $width-panel-max * 5;
+		max-width: $width-panel-max * 5;
+		transition: transform .2s ease-out;
 	
 		a {
 			text-decoration: none;
@@ -97,15 +101,23 @@ body {
 	}
 	
 	&__panel {
+		float: left;
+		width: 20%;
 		
 		&--hidden {
+/*
 			opacity: 0;
 			visibility: hidden;
+*/
 		}
 		
 		&--active {
 			opacity: 1;
 			visibility: visible;
+		}
+		
+		& table {
+			width: 100%;
 		}
 	}
 }
@@ -227,7 +239,11 @@ td[class^="cell"] {
 	@extend %border-cancel-right;
 }
 
-
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 
 

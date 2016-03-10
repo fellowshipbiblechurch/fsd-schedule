@@ -57,6 +57,29 @@ var prettifyTime = function(ugly) {
 	return prettyTime;
 }
 
+/**
+ *	Reformat meridiems if the same
+ */
+
+function formatClassTimes() {
+	var times = document.getElementsByClassName("class__times");
+	
+	for (var i=0; i < times.length; i++) {
+		var text = times[i].innerHTML;
+		var timeAlpha = text.split("-")[0];
+		var timeOmega = text.split("-")[1];
+		var meridiemAlpha = timeAlpha.split("am")[1] === "" ? "am" : "pm";
+		var meridiemOmega = timeOmega.split("am")[1] === "" ? "am" : "pm";
+		
+		var formattedTime =
+			meridiemAlpha === meridiemOmega ?
+			timeAlpha.split(meridiemAlpha)[0] + "-" + timeOmega :
+			timeAlpha + "-" + timeOmega;
+		
+		times[i].innerHTML = formattedTime;
+	}
+}
+
 
 /**
  *	Find out how many rows are needed to cover all classes in the day
@@ -154,27 +177,9 @@ function loadTodaysSchedule() {
 // loadTodaysSchedule();
 // buildSchedule(tuesday);
 
-/**
- *	Reformat meridiems if the same
- */
-
-$(".class__times").each(function() {
-	
-	var text = $(this).text();
-	var timeAlpha = text.split("-")[0];
-	var timeOmega = text.split("-")[1];
-	var meridiemAlpha = timeAlpha.split("am")[1] === "" ? "am" : "pm";
-	var meridiemOmega = timeOmega.split("am")[1] === "" ? "am" : "pm";
-	
-	meridiemAlpha === meridiemOmega ?
-	$(this).text(timeAlpha.split(meridiemAlpha)[0] + "-" + timeOmega) :
-	$(this).text(timeAlpha + "-" + timeOmega);
-	
-});
-
 
 /**
- *	Each day panel must be in carousel-like form
+ *	Carousel action for panels
  */
 
 var dayCurrIndex,
@@ -183,7 +188,7 @@ var dayCurrIndex,
 		dayCurr,
 		dayPrev,
 		dayNext,
-		$dayName = $('.day__name');
+		$dayName = $('#dayName');
 
 // get today to work from (commented out for static dev)
 /*
@@ -198,7 +203,7 @@ var dayCurrIndex,
 
 dayCurr = $dayName.text();
 
-// find indeces of yesterday, today and tomorrow 
+// find indeces of yesterday, today and tomorrow
 for (var i=0; i < days.length; i++) {
 	if(dayCurr === days[i][0].day) {
 		dayPrevIndex = i - 1;
@@ -208,7 +213,7 @@ for (var i=0; i < days.length; i++) {
 	}
 }
 
-function updateNeighbors() {
+function updateDayMeta() {
 	
 	// if dayCurr = Monday, adjust indeces
 	dayPrevIndex =	dayPrevIndex === -1 ?
@@ -224,17 +229,15 @@ function updateNeighbors() {
 									
 	dayNext = days[dayNextIndex][0].day;
 	
-/*
 	console.log("dayPrevIndex = " + dayPrevIndex);
 	console.log("dayCurrIndex = " + dayCurrIndex);
 	console.log("dayNextIndex = " + dayNextIndex);
 	console.log("dayPrev = " + dayPrev);
 	console.log("dayCurr = " + dayCurr);
 	console.log("dayNext = " + dayNext);
-*/
 }
 
-updateNeighbors();
+updateDayMeta();
 
 function updateTitleAttributes() {
 	$('.day__prev').attr("title","View " + dayPrev + "'s Classes");
@@ -246,7 +249,7 @@ updateTitleAttributes();
 
 // loop through days array and build schedule in respective panel
 
-function initializePanels() {
+function constructPanels() {
 	
 	var dayArray, dayName, panelId;
 			
@@ -261,7 +264,47 @@ function initializePanels() {
 
 }
 
-initializePanels();
+constructPanels();
+formatClassTimes();
+
+
+var width_Schedule = $(".schedule__wrapper").width();
+var width_Panels = width_Schedule * days.length;
+var width_Panel = width_Schedule;
+
+$(".schedule__panels").css({"transform": "translateX(" + (-1 * width_Panel * dayCurrIndex) + "px)"});
+
+/*
+function placeTodaysPanel() {
+	// determine dayCurrIndex
+	// 
+}
+*/
+
+
+// slide .schedule__panels on prev or next click
+
+$('.day__change').on("click", function(e){
+	
+	var isPrev, isNext;
+	
+	// determine if user clicked previous or next arrow
+	isPrev = $(this).attr("id") === "dayPrev" ? true : false;
+	isNext = isPrev ? false : true;
+	
+	console.log(isPrev);
+	
+});
+
+
+
+
+
+
+
+
+
+
 
 
 

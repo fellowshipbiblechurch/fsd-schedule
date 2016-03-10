@@ -55,8 +55,8 @@ var wednesday = [
 
 var thursday = [
 	new danceClass("Thursday", "A", "Richard Simmons Rumba", "/a", 14, 30, 15, 30),
-	new danceClass("Thursday", "A", "Lyrical Quilting III", "/a", 15, 30, 17, 30),
-	new danceClass("Thursday", "A", "What Da Foxtrot Say?", "/b", 18, 0, 20, 30),
+	new danceClass("Thursday", "A", "Lyrical Quilting III", "/a", 15, 30, 17, 0),
+	new danceClass("Thursday", "A", "What Da Foxtrot Say?", "/b", 17, 0, 19, 0),
 	new danceClass("Thursday", "B", "Ballet in Jesus' Time", "/b", 13, 45, 14, 45),
 	new danceClass("Thursday", "B", "Jazz Tap with Elton", "/b", 14, 45, 16, 30),
 	new danceClass("Thursday", "C", "Touchdown Celebrations I", "/c", 16, 0, 18, 30)

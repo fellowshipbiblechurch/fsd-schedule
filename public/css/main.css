@@ -55,10 +55,10 @@ body {
   position: relative;
   width: 100%;
   max-width: 790px;
-  margin: 0 auto;
+  margin: 3em auto;
   text-align: center;
   color: #373737;
-  overflow-x: visible;
+  overflow-x: hidden;
 }
 
 .schedule__studios {
@@ -66,8 +66,10 @@ body {
 }
 
 .schedule__panels {
-  position: absolute;
-  width: 100%;
+  position: relative;
+  width: 3950px;
+  max-width: 3950px;
+  transition: transform .2s ease-out;
 }
 
 .schedule__panels a {
@@ -75,14 +77,25 @@ body {
   color: #373737;
 }
 
+.schedule__panel {
+  float: left;
+  width: 20%;
+}
+
 .schedule__panel--hidden {
-  opacity: 0;
-  visibility: hidden;
+  /*
+			opacity: 0;
+			visibility: hidden;
+*/
 }
 
 .schedule__panel--active {
   opacity: 1;
   visibility: visible;
+}
+
+.schedule__panel table {
+  width: 100%;
 }
 
 .cell--blank, .cell__heading, .cell__index, .cell__class {
@@ -201,4 +214,10 @@ tr:last-of-type td[class^="cell"] {
 
 tr:first-of-type td[class^="cell"] {
   border-top-width: 2px;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }
