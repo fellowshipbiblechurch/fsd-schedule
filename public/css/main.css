@@ -51,7 +51,7 @@ body {
   opacity: 0;
 }
 
-.schedule {
+.schedule__wrapper {
   position: relative;
   width: 100%;
   max-width: 790px;
@@ -65,20 +65,24 @@ body {
   width: 100%;
 }
 
-.schedule__panel {
+.schedule__panels {
   position: absolute;
   width: 100%;
-  opacity: 1;
+}
+
+.schedule__panels a {
+  text-decoration: none;
+  color: #373737;
+}
+
+.schedule__panel--hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .schedule__panel--active {
   opacity: 1;
   visibility: visible;
-}
-
-.schedule a {
-  text-decoration: none;
-  color: #373737;
 }
 
 .cell--blank, .cell__heading, .cell__index, .cell__class {
@@ -97,6 +101,10 @@ body {
   background-color: #555;
   border-color: #7b7b7b;
   text-transform: uppercase;
+}
+
+.cell__heading--blank {
+  width: 10%;
 }
 
 .cell__heading--studio-a {

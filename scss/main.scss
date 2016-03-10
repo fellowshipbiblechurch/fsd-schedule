@@ -71,33 +71,42 @@ body {
 }
 
 .schedule {
-	position: relative;
-	width: 100%;
-	max-width: 790px;
-	margin: 0 auto;
-	text-align: center;
-	color: $color-text-base;
-	overflow-x: visible;
+	
+	&__wrapper {
+		position: relative;
+		width: 100%;
+		max-width: 790px;
+		margin: 0 auto;
+		text-align: center;
+		color: $color-text-base;
+		overflow-x: visible;
+	}
 	
 	&__studios {
 		width: 100%;
 	}
 	
-	&__panel {
+	&__panels {
 		position: absolute;
 		width: 100%;
-		opacity: 1;
-// 		visibility: hidden;
+	
+		a {
+			text-decoration: none;
+			color: $color-text-base;
+		}
+	}
+	
+	&__panel {
+		
+		&--hidden {
+			opacity: 0;
+			visibility: hidden;
+		}
 		
 		&--active {
 			opacity: 1;
 			visibility: visible;
 		}
-	}
-	
-	a {
-		text-decoration: none;
-		color: $color-text-base;
 	}
 }
 
@@ -122,6 +131,8 @@ body {
 		background-color: #555;
 		border-color: #7b7b7b;
 		text-transform: uppercase;
+		
+		&--blank { width: 10%; }
 		
 		&--studio-a { color: $color-bg-studio-a; }
 		&--studio-b {	color: $color-bg-studio-b; }

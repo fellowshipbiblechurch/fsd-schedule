@@ -8,16 +8,16 @@
 	</head>
 	
 	<body>
-		<div class="wrapper">
+		<div class="schedule__wrapper">
 			
 			<div id="day">
 				<div class="day__prev day__change" id="dayPrev">PREV</div>
 				<div class="day__name" id="dayName">Wednesday</div>
 				<div class="day__next day__change" id="dayNext">NEXT</div>
 			</div>
-				
-			<table class="schedule" cellpadding="0" cellspacing="0">
-				<thead class="schedule__studios">
+			
+			<table class="schedule__studios" cellpadding="0" cellspacing="0">
+				<thead>
 					<tr>
 						<td class="cell__heading cell__heading--blank"></td>
 						<td class="cell__heading cell__heading--studio-a">Studio A</td>
@@ -25,20 +25,23 @@
 						<td class="cell__heading cell__heading--studio-c">Studio B</td>
 					</tr>
 				</thead>
+			</table>
 				
-				<tbody id="monday" class="schedule__panel">
+			<table class="schedule__panels" cellpadding="0" cellspacing="0">
+				
+				<tbody id="monday" class="schedule__panel schedule__panel--hidden">
 				</tbody>
 				
-				<tbody id="tuesday" class="schedule__panel">
+				<tbody id="tuesday" class="schedule__panel schedule__panel--hidden">
 				</tbody>
 				
 				<tbody id="wednesday" class="schedule__panel schedule__panel--active">
 				</tbody>
 				
-				<tbody id="thursday" class="schedule__panel">
+				<tbody id="thursday" class="schedule__panel schedule__panel--hidden">
 				</tbody>
 				
-				<tbody id="friday" class="schedule__panel">
+				<tbody id="friday" class="schedule__panel schedule__panel--hidden">
 				</tbody>
 			</table>
 			
