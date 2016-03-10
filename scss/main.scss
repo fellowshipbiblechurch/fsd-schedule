@@ -77,6 +77,7 @@ body {
 	margin: 0 auto;
 	text-align: center;
 	color: $color-text-base;
+	overflow-x: visible;
 	
 	&__studios {
 		width: 100%;
@@ -85,8 +86,8 @@ body {
 	&__panel {
 		position: absolute;
 		width: 100%;
-		opacity: 0;
-		visibility: hidden;
+		opacity: 1;
+// 		visibility: hidden;
 		
 		&--active {
 			opacity: 1;

@@ -58,6 +58,7 @@ body {
   margin: 0 auto;
   text-align: center;
   color: #373737;
+  overflow-x: visible;
 }
 
 .schedule__studios {
@@ -67,8 +68,7 @@ body {
 .schedule__panel {
   position: absolute;
   width: 100%;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
 }
 
 .schedule__panel--active {
