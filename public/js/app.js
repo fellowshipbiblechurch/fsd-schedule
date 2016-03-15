@@ -204,6 +204,15 @@ var logDayReport = function() {
 	console.log("------");
 }
 
+var returnDayMeta = function() {
+	return dayPrev;
+	return dayCurr;
+	return dayNext;
+	return dayPrevIndex;
+	return dayCurrIndex;
+	return dayNextIndex;
+}
+
 $dayName = $('#dayName');
 
 // get today (commented out for static dev)
@@ -213,10 +222,11 @@ function setToday() {
 	var today = days[n - 1];
 	var todayStr = today[0].day;
 	$dayName.text(todayStr)/* .attr("id",todayStr.toLowerCase()) */;
+	dayCurr = $dayName.text();
 };
 
 setToday();
-dayCurr = $dayName.text();
+
 
 // find indeces of yesterday, today and tomorrow
 for (var i=0; i < days.length; i++) {
@@ -235,6 +245,7 @@ function updateDayMeta() {
 	
 	// update #dayName
 	$dayName.text(days[dayCurrIndex][0].day);
+	dayCurr = $dayName.text();
 	
 	// if dayCurr = Monday, adjust indeces
 	dayPrevIndex =	dayPrevIndex === -1 ?
@@ -254,13 +265,7 @@ function updateDayMeta() {
 	$('.day__prev').attr("title","View " + dayPrev + "'s Classes");
 	$('.day__next').attr("title","View " + dayNext + "'s Classes");
 	
-	return dayPrev;
-	return dayCurr;
-	return dayNext;
-	return dayPrevIndex;
-	return dayCurrIndex;
-	return dayNextIndex;
-	
+	returnDayMeta();
 	logDayReport();
 }
 
@@ -308,6 +313,7 @@ function slideToPrev() {
 	
 	panelPosOld = Number($panels.css('transform').toString().split(", ")[4]);
 	xToNewPanel = panelPosOld + width_Panel;
+	console.log(panelPosOld);
 	panelPosNew = "translateX(" + xToNewPanel + "px)";
 	$panels.css({"transform": panelPosNew});
 };
@@ -322,7 +328,13 @@ function slideToNext() {
 	updateDayMeta();
 	
 	panelPosOld = Number($panels.css('transform').toString().split(", ")[4]);
-	xToNewPanel = panelPosOld - width_Panel;
+	
+	// if tomorrow is Saturday, clicking next again should take you to Monday
+	xToNewPanel = dayCurrIndex > 4 ? -1 * panelPosOld : panelPosOld - width_Panel;
+	console.log(panelPosOld);
+	console.log(xToNewPanel);
+	
+
 	panelPosNew = "translateX(" + xToNewPanel + "px)";
 	$panels.css({"transform": panelPosNew});
 };
