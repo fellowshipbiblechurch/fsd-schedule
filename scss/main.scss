@@ -92,7 +92,10 @@ body {
 		position: relative;
 		width: $width-panel-max * 5;
 		max-width: $width-panel-max * 5;
-		transition: transform .2s ease-out;
+		
+		&.loaded {
+			transition: transform .2s ease-out;
+		}
 	
 		a {
 			text-decoration: none;

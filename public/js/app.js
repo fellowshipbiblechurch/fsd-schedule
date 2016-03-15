@@ -204,27 +204,18 @@ var logDayReport = function() {
 	console.log("------");
 }
 
-var returnDayMeta = function() {
-	return dayPrev;
-	return dayCurr;
-	return dayNext;
-	return dayPrevIndex;
-	return dayCurrIndex;
-	return dayNextIndex;
-}
+$dayName = $('#dayName');
 
 // get today (commented out for static dev)
-/*
-(function() {
+function setToday() {
 	var d = new Date();
 	var n = d.getDay();
 	var today = days[n - 1];
 	var todayStr = today[0].day;
-	$dayName.text(todayStr).attr("id",todayStr.toLowerCase());
-})();
-*/
+	$dayName.text(todayStr)/* .attr("id",todayStr.toLowerCase()) */;
+};
 
-$dayName = $('#dayName');
+setToday();
 dayCurr = $dayName.text();
 
 // find indeces of yesterday, today and tomorrow
@@ -243,7 +234,7 @@ for (var i=0; i < days.length; i++) {
 function updateDayMeta() {
 	
 	// update #dayName
-	$('#dayName').text(days[dayCurrIndex][0].day);
+	$dayName.text(days[dayCurrIndex][0].day);
 	
 	// if dayCurr = Monday, adjust indeces
 	dayPrevIndex =	dayPrevIndex === -1 ?
@@ -263,7 +254,13 @@ function updateDayMeta() {
 	$('.day__prev').attr("title","View " + dayPrev + "'s Classes");
 	$('.day__next').attr("title","View " + dayNext + "'s Classes");
 	
-	returnDayMeta();
+	return dayPrev;
+	return dayCurr;
+	return dayNext;
+	return dayPrevIndex;
+	return dayCurrIndex;
+	return dayNextIndex;
+	
 	logDayReport();
 }
 
@@ -272,7 +269,7 @@ function updateDayMeta() {
 function constructPanels() {
 	
 	var dayArray, dayName, panelId;
-			
+	
 	for (var i=0; i < days.length; i++) {
 		dayArray = days[i];
 		dayName = dayArray[0].day.toLowerCase();
@@ -287,48 +284,48 @@ constructPanels();
 formatClassTimes();
 updateDayMeta();
 
+
 // set today's panel
-
-
 
 var width_Schedule = $(".schedule__wrapper").width(),
 		width_Panels = width_Schedule * days.length,
 		width_Panel = width_Schedule,
 		$panels = $(".schedule__panels"),
-		distanceToGo,
-		transformVal;
+		panelPosOld,
+		panelPosNew,
+		xToNewPanel;
+
+var todayPos = -1 * width_Panel * dayCurrIndex;
+$panels.css({'transform': 'translateX(' + todayPos +'px)'}).addClass('loaded');
 
 
 function slideToPrev() {
 	dayCurrIndex -= 1;
-/*
 	dayPrevIndex = dayCurrIndex - 1;
 	dayNextIndex = dayCurrIndex + 1;
-*/
 	
 	updateDayMeta();
 	
-	distanceToGo = width_Panel * (1 - dayCurrIndex);
-	transformVal = "translateX(" + distanceToGo + "px)";
-	
-	$panels.css({"transform": transformVal});
+	panelPosOld = Number($panels.css('transform').toString().split(", ")[4]);
+	xToNewPanel = panelPosOld + width_Panel;
+	panelPosNew = "translateX(" + xToNewPanel + "px)";
+	$panels.css({"transform": panelPosNew});
 };
+
+
 
 function slideToNext() {
 	dayCurrIndex += 1;
-/*
 	dayPrevIndex = dayCurrIndex - 1;
 	dayNextIndex = dayCurrIndex + 1;
-*/
 	
 	updateDayMeta();
 	
-	distanceToGo = width_Panel * (dayCurrIndex + 1);
-	transformVal = "translateX(" + distanceToGo + "px)";
-	
-	$panels.css({"transform": transformVal});
+	panelPosOld = Number($panels.css('transform').toString().split(", ")[4]);
+	xToNewPanel = panelPosOld - width_Panel;
+	panelPosNew = "translateX(" + xToNewPanel + "px)";
+	$panels.css({"transform": panelPosNew});
 };
-
 
 
 // slide .schedule__panels on prev or next click
@@ -342,29 +339,21 @@ $('.day__prev').on("click", function(e){
 	// toggle hidden and active classes on what is now $(newDayName)
 	$(newPanel).removeClass("schedule__panel--hidden");
 	$(".schedule__panel").not(newPanel).addClass("schedule__panel--hidden");
+	e.preventDefault();
 });
 
 $('.day__next').on("click", function(e){
 	slideToNext();
+	var newDayName = days[dayCurrIndex][0].day.toLowerCase();
+	var newDayCurr = "#" + newDayName;
+	var newPanel = $(newDayCurr).closest(".schedule__panel");
+	
+	// toggle hidden and active classes on what is now $(newDayName)
+	$(newPanel).removeClass("schedule__panel--hidden");
+	$(".schedule__panel").not(newPanel).addClass("schedule__panel--hidden");
+	e.preventDefault();
 });
 
-
-
-/*
-$('.day__change').on("click", function(e){
-	
-	// determine if user clicked previous or next arrow
-	var isPrev = $(this).attr("id") === "dayPrev" ? true : false;
-	var isNext = isPrev ? false : true;
-	
-	var currTranslation;
-	
-	if (isPrev) {
-		$(".schedule__panels").css({"transform": "translateX(" + (-1 * width_Panel * dayCurrIndex) + "px)"});
-	}
-	
-});
-*/
 
 
 
@@ -415,16 +404,6 @@ $('.day__change').on("click", function(e){
 	
 });
 */
-
-
-
-
-
-
-
-
-
-
 
 
 

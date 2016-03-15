@@ -69,6 +69,9 @@ body {
   position: relative;
   width: 3950px;
   max-width: 3950px;
+}
+
+.schedule__panels.loaded {
   transition: transform .2s ease-out;
 }
 
