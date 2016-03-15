@@ -301,8 +301,10 @@ var width_Schedule = $(".schedule__wrapper").width(),
 
 function slideToPrev() {
 	dayCurrIndex -= 1;
+/*
 	dayPrevIndex = dayCurrIndex - 1;
 	dayNextIndex = dayCurrIndex + 1;
+*/
 	
 	updateDayMeta();
 	
@@ -314,8 +316,10 @@ function slideToPrev() {
 
 function slideToNext() {
 	dayCurrIndex += 1;
+/*
 	dayPrevIndex = dayCurrIndex - 1;
 	dayNextIndex = dayCurrIndex + 1;
+*/
 	
 	updateDayMeta();
 	
