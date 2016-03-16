@@ -56,6 +56,17 @@ var prettifyTime = function(ugly) {
 	return prettyTime;
 }
 
+
+/**
+ *	Find out how many rows are needed to cover all classes in the day
+ */
+
+var howManyRows = function(day) {
+	var count = (getScheduleOmegaTime(day) - getScheduleAlphaTime(day));
+	return count / 15;
+}
+
+
 /**
  *	Reformat meridiems if the same
  */
@@ -81,20 +92,10 @@ function formatClassTimes() {
 
 
 /**
- *	Find out how many rows are needed to cover all classes in the day
- */
-
-var howManyRows = function(day) {
-	var count = (getScheduleOmegaTime(day) - getScheduleAlphaTime(day));
-	return count / 15;
-}
-
-
-/**
  *	Create the studio class cells
  */
 
-var createClassCell = function(currentTime, studioArray) {
+var createClassCell = function(currentTime, studioArray, column) {
 	
 	// initialize cell as empty
 	var isEmpty = true,
@@ -107,14 +108,27 @@ var createClassCell = function(currentTime, studioArray) {
 				link = studioArray[i].link,
 				timeAlpha = studioArray[i].alphaMinutesFull(),
 				timeOmega = studioArray[i].omegaMinutesFull(),
-				duration = studioArray[i].duration();
+				duration = studioArray[i].duration(),
+				dataStudio;
+		
+		console.log(studioArray);
+/*
+		if (studioArray === "a") {
+			dataStudio = "a";
+		} else if (studioArray === "b") {
+			dataStudio = "b";
+		} else if (studioArray === "c") {
+			dataStudio = "c";
+		}
+*/
 		
 		if(timeAlpha == currentTime) {
 			isEmpty = false;
 			
 			cellHTML = '<td class="cell__class cell__class--studio-' + studio;
-			cellHTML += studio === "c" ? " cell--border-cancel-right" : "";
-			cellHTML += '" rowspan=' + duration + '>';
+			cellHTML += studio === 'c' ? ' cell--border-cancel-right' : '';
+			cellHTML += '" rowspan="' + duration + '"';
+			cellHTML += ' data-studio="' + dataStudio + '">';
 			cellHTML += '<a href="' + link + '">';
 			cellHTML += '<span class="class__title">' + title + '</span>';
 			cellHTML += '<span class="class__times">' + prettifyTime(timeAlpha) + '-' + prettifyTime(timeOmega) + '</span>';
@@ -127,7 +141,7 @@ var createClassCell = function(currentTime, studioArray) {
 			break;
 		}
 	}
-		
+	
 	if(isEmpty) {
 		cellHTML = '<td class="cell--blank';
 		cellHTML += studio === "c" ? " cell--border-cancel-right" : "";
@@ -153,9 +167,9 @@ var buildSchedule = function(day) {
 		
 		rowHTML += '<tr>';
 		rowHTML += '<td class="cell__index">' + prettifyTime(indexTime) + '</td>';
-		rowHTML += createClassCell(indexTime, studioA);
-		rowHTML += createClassCell(indexTime, studioB);
-		rowHTML += createClassCell(indexTime, studioC);
+		rowHTML += createClassCell(indexTime, studioA, i);
+		rowHTML += createClassCell(indexTime, studioB, i);
+		rowHTML += createClassCell(indexTime, studioC, i);
 		rowHTML += '</tr>';
 	}
 	return rowHTML;
