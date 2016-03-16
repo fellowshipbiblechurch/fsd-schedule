@@ -111,16 +111,14 @@ var createClassCell = function(currentTime, studioArray, column) {
 				duration = studioArray[i].duration(),
 				dataStudio;
 		
-		console.log(studioArray);
-/*
-		if (studioArray === "a") {
+// 		console.log(studio);
+		if (studio === "a") {
 			dataStudio = "a";
-		} else if (studioArray === "b") {
+		} else if (studio === "b") {
 			dataStudio = "b";
-		} else if (studioArray === "c") {
+		} else if (studio === "c") {
 			dataStudio = "c";
 		}
-*/
 		
 		if(timeAlpha == currentTime) {
 			isEmpty = false;
@@ -144,7 +142,8 @@ var createClassCell = function(currentTime, studioArray, column) {
 	
 	if(isEmpty) {
 		cellHTML = '<td class="cell--blank';
-		cellHTML += studio === "c" ? " cell--border-cancel-right" : "";
+		cellHTML += studio === 'c' ? ' cell--border-cancel-right"' : '"';
+		cellHTML += ' data-studio="' + dataStudio;
 		cellHTML += '">&nbsp;</td>';
 	}
 	
@@ -300,7 +299,13 @@ $('.day__change').on("click", function(e){
 });
 
 
-
+/*
+$('td').each(function(){
+	$(this).data("studio") === "a" ?
+	$(this).css({"display":"block"}) :
+	$(this).css({"display":"none"});
+});
+*/
 		
 /*
 var logDayReport = function() {
