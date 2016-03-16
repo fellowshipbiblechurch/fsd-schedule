@@ -243,22 +243,25 @@ for (var i=0; i < days.length; i++) {
 
 function updateDayMeta() {
 	
+	// check if dayCurrIndex is out of bounds before proceeding									
+	if (dayCurrIndex < 0 || dayCurrIndex > 4) {
+		dayCurrIndex =	dayCurrIndex < 0 ? 4 : 0;
+	}
+	
 	// update #dayName
 	$dayName.text(days[dayCurrIndex][0].day);
 	dayCurr = $dayName.text();
 	
-	// if dayCurr = Monday, adjust indeces
-	dayPrevIndex =	dayPrevIndex === -1 ?
-									dayPrevIndex += 5 :
-									dayPrevIndex;
-									
+	/* Update dayPrevIndex & dayPrevIndex based on new dayCurrIndex */
+	dayPrevIndex = dayCurrIndex - 1;
+	dayNextIndex = dayCurrIndex + 1;
+	
+	// if dayCurr = Monday, adjust indeces and set new dayPrev
+	dayPrevIndex = dayPrevIndex === -1 ? dayPrevIndex += 5 : dayPrevIndex;
 	dayPrev = days[dayPrevIndex][0].day;
 	
-	// if dayCurr = Friday, adjust indeces
-	dayNextIndex =	dayNextIndex === 5 ?
-									dayNextIndex -= 5 :
-									dayNextIndex;
-									
+	// if dayCurr = Friday, adjust indeces and set new dayNext
+	dayNextIndex = dayNextIndex === 5 ? dayNextIndex -= 5 : dayNextIndex;
 	dayNext = days[dayNextIndex][0].day;
 	
 	// update title attributes for buttons
@@ -298,7 +301,7 @@ var width_Schedule = $(".schedule__wrapper").width(),
 		$panels = $(".schedule__panels"),
 		panelPosOld,
 		panelPosNew,
-		xToNewPanel;
+		translation;
 
 var todayPos = -1 * width_Panel * dayCurrIndex;
 $panels.css({'transform': 'translateX(' + todayPos +'px)'}).addClass('loaded');
@@ -306,37 +309,36 @@ $panels.css({'transform': 'translateX(' + todayPos +'px)'}).addClass('loaded');
 
 function slideToPrev() {
 	dayCurrIndex -= 1;
-	dayPrevIndex = dayCurrIndex - 1;
-	dayNextIndex = dayCurrIndex + 1;
 	
 	updateDayMeta();
 	
 	panelPosOld = Number($panels.css('transform').toString().split(", ")[4]);
-	xToNewPanel = panelPosOld + width_Panel;
-	console.log(panelPosOld);
-	panelPosNew = "translateX(" + xToNewPanel + "px)";
-	$panels.css({"transform": panelPosNew});
+	
+	// if yesterday is Sunday, clicking next again should take you to Friday
+	panelPosNew = panelPosOld + width_Panel;
+	console.log("panelPosOld = " + panelPosOld);
+	console.log("panelPosNew = " + panelPosNew);
+	
+	translation = "translateX(" + panelPosNew + "px)";
+	$panels.css({"transform": translation});
 };
 
 
 
 function slideToNext() {
 	dayCurrIndex += 1;
-	dayPrevIndex = dayCurrIndex - 1;
-	dayNextIndex = dayCurrIndex + 1;
 	
 	updateDayMeta();
 	
 	panelPosOld = Number($panels.css('transform').toString().split(", ")[4]);
 	
-	// if tomorrow is Saturday, clicking next again should take you to Monday
-	xToNewPanel = dayCurrIndex > 4 ? -1 * panelPosOld : panelPosOld - width_Panel;
-	console.log(panelPosOld);
-	console.log(xToNewPanel);
-	
+	// if tomorrow is Saturday when clicked, this should take you to Monday
+	panelPosNew = dayCurrIndex === 5 ? -1 * panelPosOld : panelPosOld - width_Panel;
+	console.log("panelPosOld = " + panelPosOld);
+	console.log("panelPosNew = " + panelPosNew);
 
-	panelPosNew = "translateX(" + xToNewPanel + "px)";
-	$panels.css({"transform": panelPosNew});
+	translation = "translateX(" + panelPosNew + "px)";
+	$panels.css({"transform": translation});
 };
 
 

@@ -15,7 +15,8 @@ $font-size-large: 16px;
 $font-size-small: 13px;
 $font-stack-sans-serif: 'Proxima Nova', 'Helvetica Neue', sans-serif;
 
-$transition-fast: .1s ease-out;
+$transition-slow: 0.3s ease-out;
+$transition-fast: 0.1s ease-out;
 
 $width-panel-max: 790px;
 
@@ -94,7 +95,7 @@ body {
 		max-width: $width-panel-max * 5;
 		
 		&.loaded {
-			transition: transform .2s ease-out;
+			transition: transform $transition-slow;
 		}
 	
 		a {
