@@ -1,0 +1,131 @@
+/* # Mixins
+================================================== */
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+  transform: $args;
+}
+
+@mixin animation($args...) {
+  -webkit-animation: $args;
+  -moz-animation: $args;
+  -ms-animation: $args;
+  -o-animation: $args;
+  animation: $args;
+}
+
+
+
+// BEM selectors
+
+@mixin e($element) {
+	&__#{$element} {
+		@content;
+	}
+}
+@mixin m($modifier) {
+	&--#{$modifier} {
+		@content;
+	}
+}
+
+// Media queries
+
+@mixin mq($break) {
+	@if $break == "mobile" {
+		@media (max-width: $brkpoint-mobile) {
+			@content;
+		}
+	}
+	@else if $break == "tablet" {
+		@media (max-width: $brkpoint-tablet) {
+			@content;
+		}
+	}
+	@else if $break == "laptop" {
+		@media (max-width: $brkpoint-laptop) {
+			@content;
+		}
+	}
+	@else if $break == "desktop" {
+		@media (max-width: $brkpoint-desktop) {
+			@content;
+		}
+	}
+	@else {
+		@warn "Whoops! No value could be retrieved for '#{$break}'.";
+	}
+}
+
+// Background colors
+
+@mixin bg-colors($map) {
+	@each $theme, $color in $map {
+	/*
+		&--#{$theme} {
+			background-color: $color;
+		}
+	*/
+	}
+}
+
+// Image replace
+
+@mixin img-replace($img, $w, $h, $disp: block) {
+	background-image: url('#{$path--rel}/#{$img}');
+	background-repeat: no-repeat;
+	width: $w;
+	height: $h;
+	display: $disp;
+}
+
+// Adjacent sibling margins
+
+@mixin doubly($margin: 1em) {
+	& + & {
+		margin-left: $margin;
+		@content;
+	}
+}
+
+// Pseudo element shapes
+@mixin p-el($el, $el-w: null, $el-h: null) {
+	
+	@if $el == "before" or $el == "after" {
+		&:#{$el} {		
+			@extend %pseudos;
+			width: $el-w;
+			height: $el-h;
+			@content;
+		}
+	} @else {
+		@warn "'#{$el}' is not a valid psedo element.";
+	}
+}
+
+
+// Grid columns
+
+@mixin g-columns {
+	@for $i from 1 through $g-col-count {
+		
+		$context: g-context($g-col-width, $g-col-count, $g-gutter-width) !global;
+		$target: ($g-col-width * $i) + ($g-gutter-width * ($i - 1));
+		
+		&--#{$i} {
+			width: percentage($target / $context);
+		}
+	}
+}
+

@@ -1,3 +1,9 @@
+/* # Variables
+================================================== */
+/* # Mixins
+================================================== */
+/* # Functions
+================================================== */
 body {
   margin: 0;
   padding: 0;
@@ -42,9 +48,22 @@ body {
 }
 
 #day .day__name {
-  width: 24%;
+  width: 28%;
   font-size: 28px;
   color: #555;
+  letter-spacing: 1.5px;
+}
+
+@media (max-width: 790px) {
+  #day .day__name {
+    width: 40%;
+  }
+}
+
+@media (max-width: 568px) {
+  #day .day__name {
+    width: 52%;
+  }
 }
 
 #day .day__change--hidden {
@@ -67,12 +86,9 @@ body {
 
 .schedule__panels {
   position: relative;
-  width: 3950px;
-  max-width: 3950px;
-}
-
-.schedule__panels.loaded {
-  transition: transform 0.3s ease-out;
+  width: 500%;
+  max-width: 500%;
+  transition: transform 0.35s ease-out;
 }
 
 .schedule__panels a {
@@ -85,18 +101,6 @@ body {
   width: 20%;
 }
 
-.schedule__panel--hidden {
-  /*
-			opacity: 0;
-			visibility: hidden;
-*/
-}
-
-.schedule__panel--active {
-  opacity: 1;
-  visibility: visible;
-}
-
 .schedule__panel table {
   width: 100%;
 }
@@ -106,6 +110,13 @@ body {
   border: 1px solid #eee;
   font-size: 13px;
   letter-spacing: 1.5px;
+}
+
+@media (max-width: 568px) {
+  .cell--blank, .cell__heading, .cell__index, .cell__class {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
 }
 
 .cell--blank {

@@ -1,24 +1,8 @@
 
 
-$color-text-base: #373737;
-$color-bg-studio-a: #a3d5d1;
-$color-bg-studio-b: #a3c6d5;
-$color-bg-studio-c: #afb8ce;
-$color-white: #fff;
-$color-index: #b1b1b1;
-
-$padding-cell: 12px 0;
-
-$font-size-base: 16px;
-$font-size-heading: 28px;
-$font-size-large: 16px;
-$font-size-small: 13px;
-$font-stack-sans-serif: 'Proxima Nova', 'Helvetica Neue', sans-serif;
-
-$transition-slow: 0.3s ease-out;
-$transition-fast: 0.1s ease-out;
-
-$width-panel-max: 790px;
+@import 'variables',
+				'mixins',
+				'functions';
 
 body {
 	margin: 0;
@@ -32,7 +16,7 @@ body {
 }
 
 #day {
-	width: 100%;
+	width: $width-panel-base;
 	margin-bottom: 2em;
 	text-align: center;
 	text-transform: uppercase;
@@ -62,9 +46,12 @@ body {
 		}
 		
 		&__name {
-			width: 24%;
-			font-size: $font-size-heading;
+			width: 28%;
+			font-size: $font-size-heading-base;
 			color: #555;
+			letter-spacing: $font-letter-spacing-lg;
+			@include mq(tablet) { width: 40%; }
+			@include mq(mobile) { width: 52%; }
 		}
 		
 		&__change--hidden {
@@ -77,8 +64,8 @@ body {
 	
 	&__wrapper {
 		position: relative;
-		width: 100%;
-		max-width: $width-panel-max;
+		width: $width-schedule-wrapper-base;
+		max-width: $width-schedule-wrapper-max;
 		margin: 3em auto;
 		text-align: center;
 		color: $color-text-base;
@@ -91,12 +78,9 @@ body {
 	
 	&__panels {
 		position: relative;
-		width: $width-panel-max * 5;
-		max-width: $width-panel-max * 5;
-		
-		&.loaded {
-			transition: transform $transition-slow;
-		}
+		width: $width-panels-base;
+		max-width: $width-panels-max;
+		transition: transform $transition-slow;
 	
 		a {
 			text-decoration: none;
@@ -107,18 +91,6 @@ body {
 	&__panel {
 		float: left;
 		width: 20%;
-		
-		&--hidden {
-/*
-			opacity: 0;
-			visibility: hidden;
-*/
-		}
-		
-		&--active {
-			opacity: 1;
-			visibility: visible;
-		}
 		
 		& table {
 			width: 100%;
@@ -134,22 +106,23 @@ body {
 	&__class {
 		padding: $padding-cell;
 		border: 1px solid #eee;
-		font-size: $font-size-small;
-		letter-spacing: 1.5px;
+		font-size: $font-size-md;
+		letter-spacing: $font-letter-spacing-lg;
+		@include mq(mobile) {
+			font-size: $font-size-sm;
+			letter-spacing: $font-letter-spacing-sm;
+		}
 	}
 	
-	&--blank {
-		background: #e4e4e4;
-	}
+	&--blank { background: #e4e4e4; }
 	
 	&__heading {
-		font-size: $font-size-large;
+		font-size: $font-size-lg;
 		background-color: #555;
 		border-color: #7b7b7b;
 		text-transform: uppercase;
 		
 		&--blank { width: 10%; }
-		
 		&--studio-a { color: $color-bg-studio-a; }
 		&--studio-b {	color: $color-bg-studio-b; }
 		&--studio-c { color: $color-bg-studio-c; }
@@ -195,7 +168,7 @@ body {
 	&__title,
 	&__times {
 		display: block;
-		font-size: $font-size-small;
+		font-size: $font-size-md;
 	}
 	
 	&__title {

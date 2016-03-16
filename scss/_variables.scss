@@ -1,0 +1,39 @@
+/* # Variables
+================================================== */
+
+$color-text-base: #373737;
+$color-bg-studio-a: #a3d5d1;
+$color-bg-studio-b: #a3c6d5;
+$color-bg-studio-c: #afb8ce;
+$color-white: #fff;
+$color-index: #b1b1b1;
+
+$font-stack-sans-serif: 'Proxima Nova', 'Helvetica Neue', sans-serif;
+
+$font-size-base: 16px;
+$font-size-heading-base: 28px;
+$font-size-heading-sm: 24px;
+$font-size-lg: 16px;
+$font-size-md: 13px;
+$font-size-sm: 11px;
+$font-letter-spacing-lg: 1.5px;
+$font-letter-spacing-md: 1.0px;
+$font-letter-spacing-sm: 0.5px;
+
+$transition-slow: 0.35s ease-out;
+$transition-fast: 0.1s ease-out;
+
+$num-panels: 5;
+
+$width-schedule-wrapper-base: 100%;
+$width-schedule-wrapper-max: 790px;
+$width-panel-base: 100%;
+$width-panel-max: 100%;
+$width-panels-base: $width-panel-base * $num-panels;
+$width-panels-max: $width-panel-max * $num-panels;
+
+$padding-cell: 12px 0;
+
+$brkpoint-mobile: 568px;
+$brkpoint-tablet: 790px;
+$brkpoint-laptop: 1024px;

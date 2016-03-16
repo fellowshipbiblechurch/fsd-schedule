@@ -1,0 +1,27 @@
+/* # Functions
+================================================== */
+
+// Import if Adobe Typekit URL is defined
+
+@if variable-exists(font-url--typekit) {
+	@import url($font-url--typekit);
+}
+
+// Calculate em values
+
+@function em($target, $context: $font-size-base) {
+	@return ($target / $context) * 1em;
+}
+
+// Call the color palette modifiers
+
+@function palette($palette, $shade: 'base') {
+	@return map-get(map-get($palettes, $palette), $shade);
+}
+
+// Set context width for the grid
+
+@function g-context($g-col-width, $g-col-count, $g-gutter-width) {
+	$g-context: ($g-col-width * $g-col-count) + ($g-gutter-width * ($g-col-count - 1));
+	@return $g-context;
+}
