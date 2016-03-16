@@ -1,4 +1,3 @@
-
 /* # Build day panel from class listings
 ================================================== */
 
@@ -285,6 +284,7 @@ $('.day__change').on("click", function(e){
 	var newDayCurr = "#" + newDayName;
 	var newPanel = $(newDayCurr).closest(".schedule__panel");	
 });
+
 
 
 		
