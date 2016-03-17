@@ -18,7 +18,6 @@ columnC.hide();
 
 $('[class*="heading--studio-"]').each(function(){
 	var arrow = $(this).find('.studio__arrow');
-// 	arrow.first().addClass('active');
 	
 	$(this).on('click', function(){
 		var studio = $(this).children('span:first-of-type').text().toLowerCase().split(' ')[1];	
@@ -27,6 +26,11 @@ $('[class*="heading--studio-"]').each(function(){
 			columnA.show();
 			columnB.hide();
 			columnC.hide();
+/*
+			columnA.toggleClass('visible');
+			columnB.toggleClass('hidden');
+			columnC.toggleClass('hidden');
+*/
 /*
 			!arrow.hasClass('active') ?
 				arrow.addClass('active') :
@@ -37,21 +41,11 @@ $('[class*="heading--studio-"]').each(function(){
 			columnA.hide();
 			columnB.show();
 			columnC.hide();
-/*
-			!arrow.hasClass('active') ?
-				arrow.addClass('active') :
-				arrow.removeClass('active');
-*/
 		}
 		if (studio === 'c') {
 			columnA.hide();
 			columnB.hide();
 			columnC.show();
-/*
-			!arrow.hasClass('active') ?
-				arrow.addClass('active') :
-				arrow.removeClass('active');
-*/
 		}
 	});
 });

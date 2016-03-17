@@ -150,6 +150,10 @@ body {
 
 .cell__heading[class*="--studio-"] {
   width: 30%;
+  /*
+			&.visible { opacity: 1; }
+			&.hidden { opacity: 0; }
+*/
 }
 
 @media (max-width: 568px) {

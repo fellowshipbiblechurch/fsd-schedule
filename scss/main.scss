@@ -148,6 +148,11 @@ body {
 				font-size: $font-size-sm;
 				padding: 16px 0;
 			}
+			
+/*
+			&.visible { opacity: 1; }
+			&.hidden { opacity: 0; }
+*/
 		}
 		
 		&--studio-a { color: $color-bg-studio-a; }
