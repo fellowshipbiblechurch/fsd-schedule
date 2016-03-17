@@ -8,41 +8,34 @@
 	</head>
 	
 	<body>
+		
 		<div class="schedule__wrapper">
 			
-			<div id="day">
-				<div class="day__prev day__change" id="dayPrev">PREV</div>
+			<div class="schedule__day" id="day">
+				<a class="day__prev day__change" id="dayPrev">PREV</a>
 				<div class="day__name" id="dayName"></div>
-				<div class="day__next day__change" id="dayNext">NEXT</div>
+				<a class="day__next day__change" id="dayNext">NEXT</a>
 			</div>
 			
-			<table class="schedule__studios" cellpadding="0" cellspacing="0">
-				<thead>
-					<tr>
-						<td class="cell__heading cell__heading--blank"></td>
-						<td class="cell__heading cell__heading--studio-a">Studio A</td>
-						<td class="cell__heading cell__heading--studio-b">Studio B</td>
-						<td class="cell__heading cell__heading--studio-c">Studio B</td>
-					</tr>
-				</thead>
-			</table>
+			<div class="schedule__studios">
+				<table cellpadding="0" cellspacing="0">
+					<thead>
+						<tr>
+							<td class="cell__heading cell__heading--blank"></td>
+							<td class="cell__heading cell__heading--studio-a" data-studio="a">Studio A</td>
+							<td class="cell__heading cell__heading--studio-b" data-studio="b">Studio B</td>
+							<td class="cell__heading cell__heading--studio-c" data-studio="c">Studio B</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
 			
-			<div class="schedule__panels clearfix">
-				<div class="schedule__panel">
-					<table id="monday" cellpadding="0" cellspacing="0"></table>
-				</div>
-				<div class="schedule__panel">
-					<table id="tuesday" cellpadding="0" cellspacing="0"></table>
-				</div>
-				<div class="schedule__panel">
-					<table id="wednesday" cellpadding="0" cellspacing="0"></table>
-				</div>
-				<div class="schedule__panel">
-					<table id="thursday" cellpadding="0" cellspacing="0"></table>
-				</div>
-				<div class="schedule__panel">
-					<table id="friday" cellpadding="0" cellspacing="0"></table>
-				</div>
+			<div class="schedule__panels">
+				<table class="schedule__panel" cellpadding="0" cellspacing="0" id="monday"></table>
+				<table class="schedule__panel" cellpadding="0" cellspacing="0" id="tuesday"></table>
+				<table class="schedule__panel" cellpadding="0" cellspacing="0" id="wednesday"></table>
+				<table class="schedule__panel" cellpadding="0" cellspacing="0" id="thursday"></table>
+				<table class="schedule__panel" cellpadding="0" cellspacing="0" id="friday"></table>
 			</div>
 			
 		</div>

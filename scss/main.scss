@@ -1,4 +1,5 @@
-
+/* # Base Styles
+================================================== */
 
 @import 'variables',
 				'mixins',
@@ -8,56 +9,6 @@ body {
 	margin: 0;
 	padding: 0;
 	font: $font-size-base/1 $font-stack-sans-serif;
-}
-
-.wrapper {
-	width: 94%;
-	margin: 5em auto;
-}
-
-#day {
-	width: $width-panel-base;
-	margin-bottom: 2em;
-	text-align: center;
-	text-transform: uppercase;
-	box-sizing: border-box;
-	
-	.day {
-		&__prev,
-		&__name,
-		&__next {
-			margin: 0;
-			padding: 0;
-			display: inline-block;
-			vertical-align: middle;
-		}
-		
-		&__prev { background: #fff url('../img/arrow-left.png') no-repeat center center; }
-		&__next { background: #fff url('../img/arrow-right.png') no-repeat center center; }
-		
-		&__prev,
-		&__next {
-			width: 30px;
-			height: 30px;
-			cursor: pointer;
-			padding: 0;
-			background-size: 50%;
-			text-indent: -9999px;
-		}
-		
-		&__name {
-			width: 28%;
-			font-size: $font-size-heading-base;
-			color: #555;
-			letter-spacing: $font-letter-spacing-lg;
-			@include mq(tablet) { width: 40%; }
-			@include mq(mobile) { width: 52%; }
-		}
-		
-		&__change--hidden {
-			opacity: 0;
-		}
-	}
 }
 
 .schedule {
@@ -72,9 +23,52 @@ body {
 		overflow-x: hidden;
 	}
 	
-	&__studios {
-		width: 100%;
+	&__day {
+		width: $width-panel-base;
+		margin-bottom: 2em;
+		text-align: center;
+		text-transform: uppercase;
+		box-sizing: border-box;
+		
+		.day {
+			&__prev,
+			&__name,
+			&__next {
+				margin: 0;
+				padding: 0;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			
+			&__prev { background: #fff url('../img/arrow-left.png') no-repeat center center; }
+			&__next { background: #fff url('../img/arrow-right.png') no-repeat center center; }
+			
+			&__prev,
+			&__next {
+				width: 30px;
+				height: 30px;
+				cursor: pointer;
+				padding: 0;
+				background-size: 50%;
+				text-indent: -9999px;
+			}
+			
+			&__name {
+				width: 28%;
+				font-size: $font-size-heading-base;
+				color: #555;
+				letter-spacing: $font-letter-spacing-lg;
+				@include mq(tablet) { width: 40%; }
+				@include mq(mobile) { width: 52%; }
+			}
+			
+			&__change--hidden {
+				opacity: 0;
+			}
+		}
 	}
+	
+	&__studios table { width: 100%; }
 	
 	&__panels {
 		position: relative;

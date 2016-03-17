@@ -1,3 +1,5 @@
+/* # Base Styles
+================================================== */
 /* # Variables
 ================================================== */
 /* # Mixins
@@ -10,66 +12,6 @@ body {
   font: 16px "Proxima Nova", "Helvetica Neue", sans-serif;
 }
 
-.wrapper {
-  width: 94%;
-  margin: 5em auto;
-}
-
-#day {
-  width: 100%;
-  margin-bottom: 2em;
-  text-align: center;
-  text-transform: uppercase;
-  box-sizing: border-box;
-}
-
-#day .day__prev, #day .day__name, #day .day__next {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-#day .day__prev {
-  background: #fff url("../img/arrow-left.png") no-repeat center center;
-}
-
-#day .day__next {
-  background: #fff url("../img/arrow-right.png") no-repeat center center;
-}
-
-#day .day__prev, #day .day__next {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  padding: 0;
-  background-size: 50%;
-  text-indent: -9999px;
-}
-
-#day .day__name {
-  width: 28%;
-  font-size: 28px;
-  color: #555;
-  letter-spacing: 1.5px;
-}
-
-@media (max-width: 790px) {
-  #day .day__name {
-    width: 40%;
-  }
-}
-
-@media (max-width: 568px) {
-  #day .day__name {
-    width: 52%;
-  }
-}
-
-#day .day__change--hidden {
-  opacity: 0;
-}
-
 .schedule__wrapper {
   position: relative;
   width: 100%;
@@ -80,7 +22,62 @@ body {
   overflow-x: hidden;
 }
 
-.schedule__studios {
+.schedule__day {
+  width: 100%;
+  margin-bottom: 2em;
+  text-align: center;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+.schedule__day .day__prev, .schedule__day .day__name, .schedule__day .day__next {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.schedule__day .day__prev {
+  background: #fff url("../img/arrow-left.png") no-repeat center center;
+}
+
+.schedule__day .day__next {
+  background: #fff url("../img/arrow-right.png") no-repeat center center;
+}
+
+.schedule__day .day__prev, .schedule__day .day__next {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  padding: 0;
+  background-size: 50%;
+  text-indent: -9999px;
+}
+
+.schedule__day .day__name {
+  width: 28%;
+  font-size: 28px;
+  color: #555;
+  letter-spacing: 1.5px;
+}
+
+@media (max-width: 790px) {
+  .schedule__day .day__name {
+    width: 40%;
+  }
+}
+
+@media (max-width: 568px) {
+  .schedule__day .day__name {
+    width: 52%;
+  }
+}
+
+.schedule__day .day__change--hidden {
+  opacity: 0;
+}
+
+.schedule__studios table {
   width: 100%;
 }
 
