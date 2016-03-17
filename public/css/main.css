@@ -9,21 +9,28 @@
 body {
   margin: 0;
   padding: 0;
-  font: 16px "Proxima Nova", "Helvetica Neue", sans-serif;
 }
 
-.schedule * {
-  box-sizing: border-box;
+/*
+.squarespace-shell {
+	width: 100%;
 }
-
+*/
 .schedule__wrapper {
-  position: relative;
   width: 100%;
   max-width: 790px;
+  position: relative;
   margin: 3em auto;
   text-align: center;
+  font: 16px "Proxima Nova", "Helvetica Neue", sans-serif;
   color: #373737;
   overflow-x: hidden;
+}
+
+@media (max-width: 568px) {
+  .schedule__wrapper {
+    font-size: 22px;
+  }
 }
 
 .schedule__day {
@@ -73,7 +80,8 @@ body {
 
 @media (max-width: 568px) {
   .schedule__day .day__name {
-    width: 52%;
+    width: 58%;
+    font-size: 24px;
   }
 }
 
@@ -107,13 +115,13 @@ body {
 .cell--blank, .cell__heading, .cell__index, .cell__class {
   padding: 12px 0;
   border: 1px solid #eee;
-  font-size: 13px;
+  font-size: 16px;
   letter-spacing: 1.5px;
 }
 
 @media (max-width: 568px) {
   .cell--blank, .cell__heading, .cell__index, .cell__class {
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.5px;
   }
 }
@@ -123,7 +131,8 @@ body {
 }
 
 .cell__heading {
-  font-size: 16px;
+  position: relative;
+  font-size: 22px;
   background-color: #555;
   border-color: #7b7b7b;
   text-transform: uppercase;
@@ -131,6 +140,24 @@ body {
 
 .cell__heading--blank {
   width: 10%;
+}
+
+@media (max-width: 568px) {
+  .cell__heading--blank {
+    width: 19%;
+  }
+}
+
+.cell__heading[class*="--studio-"] {
+  width: 30%;
+}
+
+@media (max-width: 568px) {
+  .cell__heading[class*="--studio-"] {
+    width: 23%;
+    font-size: 13px;
+    padding: 16px 0;
+  }
 }
 
 .cell__heading--studio-a {
@@ -145,8 +172,23 @@ body {
   color: #afb8ce;
 }
 
-.cell__heading[class*="--studio-"] {
-  width: 30%;
+.cell__heading .studio__arrow {
+  display: none;
+}
+
+@media (max-width: 568px) {
+  .cell__heading .studio__arrow {
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+    width: 0px;
+    height: 0px;
+    border: 8px solid transparent;
+    border-bottom-color: #eee;
+  }
+  .cell__heading .studio__arrow.active {
+    display: inline;
+  }
 }
 
 .cell__index {
@@ -155,11 +197,24 @@ body {
   background-color: #b1b1b1;
 }
 
+@media (max-width: 568px) {
+  .cell__index {
+    width: 19%;
+    font-size: 13px;
+  }
+}
+
 .cell__class {
   width: 30%;
   padding: 0;
   vertical-align: top;
   transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+}
+
+@media (max-width: 568px) {
+  .cell__class {
+    width: 69%;
+  }
 }
 
 .cell__class:hover {
@@ -190,7 +245,6 @@ body {
 
 .class__title, .class__times {
   display: block;
-  font-size: 13px;
 }
 
 .class__title {

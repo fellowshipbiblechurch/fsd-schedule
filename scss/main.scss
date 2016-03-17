@@ -8,23 +8,31 @@
 body {
 	margin: 0;
 	padding: 0;
-	font: $font-size-base/1 $font-stack-sans-serif;
+// 	font: $font-size-base/1 $font-stack-sans-serif;
 }
+
+/*
+.squarespace-shell {
+	width: 100%;
+}
+*/
 
 .schedule {
 	
-	* {
-		box-sizing: border-box;
-	}
-	
 	&__wrapper {
-		position: relative;
 		width: $width-schedule-wrapper-base;
 		max-width: $width-schedule-wrapper-max;
+		position: relative;
 		margin: 3em auto;
 		text-align: center;
+		font: $font-size-base/1 $font-stack-sans-serif;
 		color: $color-text-base;
 		overflow-x: hidden;
+		
+		@include mq(mobile) {
+// 			width: 96%;
+			font-size: $font-size-lg;
+		}
 	}
 	
 	&__day {
@@ -63,7 +71,10 @@ body {
 				color: #555;
 				letter-spacing: $font-letter-spacing-lg;
 				@include mq(tablet) { width: 40%; }
-				@include mq(mobile) { width: 52%; }
+				@include mq(mobile) {
+					width: 58%;
+					font-size: $font-size-heading-sm;
+				}
 			}
 			
 			&__change--hidden {
@@ -94,6 +105,8 @@ body {
 		width: 20%;
 		border-spacing: 0;
 	}
+	
+	&__wrapper.mobile {}
 }
 
 .cell {
@@ -104,7 +117,7 @@ body {
 	&__class {
 		padding: $padding-cell;
 		border: 1px solid #eee;
-		font-size: $font-size-md;
+		font-size: $font-size-base;
 		letter-spacing: $font-letter-spacing-lg;
 		@include mq(mobile) {
 			font-size: $font-size-sm;
@@ -115,17 +128,49 @@ body {
 	&--blank { background: #e4e4e4; }
 	
 	&__heading {
+		position: relative;
 		font-size: $font-size-lg;
 		background-color: #555;
 		border-color: #7b7b7b;
 		text-transform: uppercase;
 		
-		&--blank { width: 10%; }
+		&--blank {
+			width: 10%;
+			@include mq(mobile) {
+				width: 19%;
+			}
+		}
+		
+		&[class*="--studio-"] {
+			width: 30%;
+			@include mq(mobile) {
+				width: 23%;
+				font-size: $font-size-sm;
+				padding: 16px 0;
+			}
+		}
+		
 		&--studio-a { color: $color-bg-studio-a; }
 		&--studio-b {	color: $color-bg-studio-b; }
 		&--studio-c { color: $color-bg-studio-c; }
 		
-		&[class*="--studio-"] { width: 30%; }
+		.studio__arrow {
+			display: none;
+			
+			@include mq(mobile) {
+				position: absolute;
+				bottom: 0;
+				left: 40%;
+				width: 0px;
+				height: 0px;
+				border: 8px solid transparent;
+				border-bottom-color: #eee;
+				
+				&.active {
+					display: inline;
+				}
+			}
+		}
 	}
 	
 	&__index {
@@ -133,6 +178,10 @@ body {
 		color: $color-white;
 		background-color: $color-index;
 		@extend %border-cancel-left;
+		@include mq(mobile) {
+			width: 19%;
+			font-size: $font-size-sm;
+		}
 	}
 	
 	&__class {
@@ -143,6 +192,9 @@ body {
 								transform $transition-fast,
 								box-shadow $transition-fast,
 								border $transition-fast;
+		@include mq(mobile) {
+			width: 69%;
+		}
 		
 		&:hover {
 			-webkit-transform: scale(1.01);
@@ -168,7 +220,7 @@ body {
 	&__title,
 	&__times {
 		display: block;
-		font-size: $font-size-md;
+// 		font-size: $font-size-base;
 	}
 	
 	&__title {
@@ -221,6 +273,4 @@ td[class^="cell"] {
   display: table;
   clear: both;
 }
-
-
 

@@ -400,7 +400,7 @@ function updateDayMeta(direction) {
 		$(this).addClass('active') :
 		$(this).removeClass('active');
 	});
-		
+	
 // 	logDayReport();
 }
 
@@ -417,6 +417,5 @@ $('.day__change').on("click", function(e){
 	updateDayMeta("next");
 	e.preventDefault();
 });
-
 
 
