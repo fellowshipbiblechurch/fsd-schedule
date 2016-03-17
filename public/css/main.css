@@ -12,6 +12,10 @@ body {
   font: 16px "Proxima Nova", "Helvetica Neue", sans-serif;
 }
 
+.schedule * {
+  box-sizing: border-box;
+}
+
 .schedule__wrapper {
   position: relative;
   width: 100%;
@@ -77,8 +81,9 @@ body {
   opacity: 0;
 }
 
-.schedule__studios table {
+.schedule__studios {
   width: 100%;
+  border-spacing: 0;
 }
 
 .schedule__panels {
@@ -96,10 +101,7 @@ body {
 .schedule__panel {
   float: left;
   width: 20%;
-}
-
-.schedule__panel table {
-  width: 100%;
+  border-spacing: 0;
 }
 
 .cell--blank, .cell__heading, .cell__index, .cell__class {
@@ -141,6 +143,10 @@ body {
 
 .cell__heading--studio-c {
   color: #afb8ce;
+}
+
+.cell__heading[class*="--studio-"] {
+  width: 30%;
 }
 
 .cell__index {
