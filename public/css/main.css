@@ -6,6 +6,23 @@
 ================================================== */
 /* # Functions
 ================================================== */
+@keyframes studioFadeIn {
+  50% {
+    display: table-cell;
+    opacity: 0.5;
+  }
+}
+
+@keyframes studioFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -111,6 +128,10 @@ body {
   position: relative;
   width: 500%;
   max-width: 500%;
+  -webkit-transition: transform 0.35s ease-out;
+  -moz-transition: transform 0.35s ease-out;
+  -ms-transition: transform 0.35s ease-out;
+  -o-transition: transform 0.35s ease-out;
   transition: transform 0.35s ease-out;
 }
 
@@ -137,16 +158,27 @@ body {
     font-size: 13px;
     letter-spacing: 0.5px;
   }
-  .cell--blank.visible, .cell__heading.visible, .cell__index.visible, .cell__class.visible {
-    display: table-cell;
-  }
-  .cell--blank.hidden, .cell__heading.hidden, .cell__index.hidden, .cell__class.hidden {
-    display: none;
-  }
 }
 
 .cell--blank {
   background: #e4e4e4;
+}
+
+@media (max-width: 568px) {
+  .cell--blank {
+    display: none;
+    opacity: 0;
+    -webkit-transition: opacity 0.1s ease-out;
+    -moz-transition: opacity 0.1s ease-out;
+    -ms-transition: opacity 0.1s ease-out;
+    -o-transition: opacity 0.1s ease-out;
+    transition: opacity 0.1s ease-out;
+    transition-delay: 0.05s;
+  }
+  .cell--blank.visible {
+    display: table-cell;
+    opacity: 1;
+  }
 }
 
 .cell__heading {
@@ -169,10 +201,6 @@ body {
 
 .cell__heading[class*="--studio-"] {
   width: 30%;
-  /*
-			&.visible { color: $color-grey-light; }
-			&.hidden { display: none; }
-*/
 }
 
 @media (max-width: 568px) {
@@ -199,6 +227,9 @@ body {
   .cell__heading[class*="--studio-"]:hover {
     color: #eee;
   }
+  .cell__heading[class*="--studio-"].active {
+    color: #eee;
+  }
 }
 
 .cell__heading--studio-a {
@@ -219,12 +250,13 @@ body {
 
 @media (max-width: 568px) {
   .cell__heading .studio__arrow {
-    display: none;
+    display: inline;
     position: absolute;
     bottom: 0;
     left: calc(50% - 8px);
     width: 0px;
     height: 0px;
+    opacity: 0;
     border: 8px solid transparent;
     border-bottom-color: #eee;
     -webkit-transition: opacity 0.1s ease-out;
@@ -234,7 +266,6 @@ body {
     transition: opacity 0.1s ease-out;
   }
   .cell__heading .studio__arrow.active {
-    display: inline;
     opacity: 1;
   }
 }
@@ -256,12 +287,35 @@ body {
   width: 30%;
   padding: 0;
   vertical-align: top;
-  transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+  -webkit-transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+  -moz-transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+  -ms-transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+  -o-transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+  transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+  transition-delay: 0.05s;
 }
 
 @media (max-width: 568px) {
   .cell__class {
+    display: none;
     width: 69%;
+    opacity: 0;
+  }
+  .cell__class.visible {
+    /*
+				position: absolute;
+				z-index: 999;
+*/
+    display: table-cell;
+    opacity: 1;
+  }
+  .cell__class.hidden {
+    /*
+				position: static;
+				z-index: 998;
+*/
+    display: table-cell;
+    opacity: 1;
   }
 }
 

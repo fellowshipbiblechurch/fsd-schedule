@@ -3,12 +3,12 @@
 
 @import 'variables',
 				'mixins',
-				'functions';
+				'functions',
+				'animations';
 
 body {
 	margin: 0;
 	padding: 0;
-// 	font: $font-size-base/1 $font-stack-sans-serif;
 }
 
 /*
@@ -101,7 +101,7 @@ body {
 		position: relative;
 		width: $width-panels-base;
 		max-width: $width-panels-max;
-		transition: transform $transition-slow;
+		@include transition(transform $transition-slow);
 	
 		a {
 			text-decoration: none;
@@ -131,13 +131,24 @@ body {
 		@include mq(mobile) {
 			font-size: $font-size-sm;
 			letter-spacing: $font-letter-spacing-sm;
-				
-			&.visible { display: table-cell; }
-			&.hidden { display: none; }
 		}
 	}
 	
-	&--blank { background: #e4e4e4; }
+	&--blank {
+		background: $color-grey-med;
+		
+		@include mq(mobile) {
+			display: none;
+			opacity: 0;
+			@include transition(opacity $transition-fast);
+			transition-delay: $transition-delay;
+			
+			&.visible {
+				display: table-cell;
+				opacity: 1;
+			}
+		}
+	}
 	
 	&__heading {
 		position: relative;
@@ -167,15 +178,9 @@ body {
 			  user-select: none;
 				@include transition(color $transition-fast);
 				
-				&:hover {
-					color: $color-grey-light;
-				}
+				&:hover { color: $color-grey-light; }
+				&.active { color: $color-grey-light; }
 			}
-			
-/*
-			&.visible { color: $color-grey-light; }
-			&.hidden { display: none; }
-*/
 		}
 		
 		&--studio-a { color: $color-bg-studio-a; }
@@ -186,18 +191,18 @@ body {
 			display: none;
 			
 			@include mq(mobile) {
-				display: none;
+				display: inline;
 				position: absolute;
 				bottom: 0;
 				left: calc(50% - 8px);
 				width: 0px;
 				height: 0px;
-// 				opacity: 0;
+				opacity: 0;
 				border: 8px solid transparent;
 				border-bottom-color: $color-grey-light;
 				@include transition(opacity $transition-fast);
 				
-				&.active { display: inline; opacity: 1; }
+				&.active { opacity: 1; }
 			}
 		}
 	}
@@ -217,12 +222,32 @@ body {
 		width: 30%;
 		padding: 0;
 		vertical-align: top;
-		transition: -webkit-transform $transition-fast,
-								transform $transition-fast,
-								box-shadow $transition-fast,
-								border $transition-fast;
+		@include transition(-webkit-transform $transition-fast, transform $transition-fast, opacity $transition-fast, box-shadow $transition-fast, border $transition-fast);
+		transition-delay: $transition-delay;
 		@include mq(mobile) {
+			display: none;
 			width: 69%;
+			opacity: 0;
+			
+			&.visible {
+/*
+				position: absolute;
+				z-index: 999;
+*/
+				display: table-cell;
+				opacity: 1;
+// 				animation: studioFadeIn $transition-fast;
+			}
+			
+			&.hidden {
+/*
+				position: static;
+				z-index: 998;
+*/
+				display: table-cell;
+				opacity: 1;
+// 				animation: studioFadeOut $transition-fast;
+			}
 		}
 		
 		&:hover {

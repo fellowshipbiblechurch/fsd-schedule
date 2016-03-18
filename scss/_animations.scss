@@ -1,0 +1,10 @@
+@keyframes studioFadeIn {
+// 	0%		{ opacity: 0; }
+	50%		{ display: table-cell; opacity: 0.5; }
+// 	100%	{ opacity: 1; }
+}
+
+@keyframes studioFadeOut {
+	0%		{ opacity: 1; }
+	100%	{ opacity: 0; display: none; }
+}
