@@ -193,6 +193,12 @@ body {
   width: 10%;
 }
 
+@media (max-width: 790px) {
+  .cell__heading--blank {
+    width: 13%;
+  }
+}
+
 @media (max-width: 568px) {
   .cell__heading--blank {
     width: 19%;
@@ -201,6 +207,12 @@ body {
 
 .cell__heading[class*="--studio-"] {
   width: 30%;
+}
+
+@media (max-width: 790px) {
+  .cell__heading[class*="--studio-"] {
+    width: 29%;
+  }
 }
 
 @media (max-width: 568px) {
@@ -276,6 +288,12 @@ body {
   background-color: #b1b1b1;
 }
 
+@media (max-width: 790px) {
+  .cell__index {
+    width: 13%;
+  }
+}
+
 @media (max-width: 568px) {
   .cell__index {
     width: 19%;
@@ -287,12 +305,17 @@ body {
   width: 30%;
   padding: 0;
   vertical-align: top;
-  -webkit-transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
-  -moz-transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
-  -ms-transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
-  -o-transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
-  transition: -webkit-transform 0.1s ease-out, transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
-  transition-delay: 0.05s;
+  -webkit-transition: transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+  -moz-transition: transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+  -ms-transition: transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+  -o-transition: transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out, box-shadow 0.1s ease-out, border 0.1s ease-out;
+}
+
+@media (max-width: 790px) {
+  .cell__class {
+    width: 29%;
+  }
 }
 
 @media (max-width: 568px) {
@@ -302,18 +325,10 @@ body {
     opacity: 0;
   }
   .cell__class.visible {
-    /*
-				position: absolute;
-				z-index: 999;
-*/
     display: table-cell;
     opacity: 1;
   }
   .cell__class.hidden {
-    /*
-				position: static;
-				z-index: 998;
-*/
     display: table-cell;
     opacity: 1;
   }

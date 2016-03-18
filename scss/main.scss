@@ -30,7 +30,6 @@ body {
 		overflow-x: hidden;
 		
 		@include mq(mobile) {
-// 			width: 96%;
 			font-size: $font-size-lg;
 		}
 		
@@ -159,6 +158,9 @@ body {
 		
 		&--blank {
 			width: 10%;
+			@include mq(tablet) {
+				width: 13%;
+			}
 			@include mq(mobile) {
 				width: 19%;
 			}
@@ -166,6 +168,9 @@ body {
 		
 		&[class*="--studio-"] {
 			width: 30%;
+			@include mq(tablet) {
+				width: 29%;
+			}
 			@include mq(mobile) {
 				width: 23%;
 				font-size: $font-size-sm;
@@ -212,6 +217,9 @@ body {
 		color: $color-white;
 		background-color: $color-grey-dark;
 		@extend %border-cancel-left;
+		@include mq(tablet) {
+			width: 13%;
+		}
 		@include mq(mobile) {
 			width: 19%;
 			font-size: $font-size-sm;
@@ -222,28 +230,23 @@ body {
 		width: 30%;
 		padding: 0;
 		vertical-align: top;
-		@include transition(-webkit-transform $transition-fast, transform $transition-fast, opacity $transition-fast, box-shadow $transition-fast, border $transition-fast);
-		transition-delay: $transition-delay;
+		@include transition(transform $transition-fast, opacity $transition-fast, box-shadow $transition-fast, border $transition-fast);
+// 		transition-delay: $transition-delay;
+		@include mq(tablet) {
+			width: 29%;
+		}
 		@include mq(mobile) {
 			display: none;
 			width: 69%;
 			opacity: 0;
 			
 			&.visible {
-/*
-				position: absolute;
-				z-index: 999;
-*/
 				display: table-cell;
 				opacity: 1;
 // 				animation: studioFadeIn $transition-fast;
 			}
 			
 			&.hidden {
-/*
-				position: static;
-				z-index: 998;
-*/
 				display: table-cell;
 				opacity: 1;
 // 				animation: studioFadeOut $transition-fast;
