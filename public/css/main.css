@@ -137,6 +137,12 @@ body {
     font-size: 13px;
     letter-spacing: 0.5px;
   }
+  .cell--blank.visible, .cell__heading.visible, .cell__index.visible, .cell__class.visible {
+    display: table-cell;
+  }
+  .cell--blank.hidden, .cell__heading.hidden, .cell__index.hidden, .cell__class.hidden {
+    display: none;
+  }
 }
 
 .cell--blank {
@@ -164,8 +170,8 @@ body {
 .cell__heading[class*="--studio-"] {
   width: 30%;
   /*
-			&.visible { opacity: 1; }
-			&.hidden { opacity: 0; }
+			&.visible { color: $color-grey-light; }
+			&.hidden { display: none; }
 */
 }
 
@@ -213,6 +219,7 @@ body {
 
 @media (max-width: 568px) {
   .cell__heading .studio__arrow {
+    display: none;
     position: absolute;
     bottom: 0;
     left: calc(50% - 8px);
@@ -220,9 +227,15 @@ body {
     height: 0px;
     border: 8px solid transparent;
     border-bottom-color: #eee;
+    -webkit-transition: opacity 0.1s ease-out;
+    -moz-transition: opacity 0.1s ease-out;
+    -ms-transition: opacity 0.1s ease-out;
+    -o-transition: opacity 0.1s ease-out;
+    transition: opacity 0.1s ease-out;
   }
   .cell__heading .studio__arrow.active {
     display: inline;
+    opacity: 1;
   }
 }
 

@@ -1,70 +1,58 @@
 /* # Tabs for Mobile Schedule
 ================================================== */
 
-/*
-$('.schedule__panel').each(function(){
-	var cells = $(this).find('td[class^="cell__"]');
-	cells.css({"color": "red"});
-});
-*/
 
 if ($(window).width() < 568) {
 	$('.schedule__wrapper').addClass('mobile');
 }
 
 if ($('.schedule__wrapper').hasClass('mobile')) {
-	var cells = $('td').each(function(){return $(this);});
-	var columnA = cells.filter($('[data-studio="a"]'));
-	var columnB = cells.filter($('[data-studio="b"]'));
-	var columnC = cells.filter($('[data-studio="c"]'));
 	
-	columnB.hide();
-	columnC.hide();
-	
-	$('[class*="heading--studio-"]').each(function(){
-		var arrow = $(this).find('.studio__arrow');
+	$('.schedule__wrapper').each(function(){
 		
-		$(this).on('click', function(){
-			var studioName = $(this).children('span:first-of-type').text().toLowerCase().split(' ')[1];	
+		var cells = $('td').each(function(){return $(this);});
+		var arrows = $('.studio__arrow').each(function(){return $(this);});
+		var studios = $('[class*="__heading--studio-"]');
+		var columnA = cells.filter($('[data-studio="a"]'));
+		var columnB = cells.filter($('[data-studio="b"]'));
+		var columnC = cells.filter($('[data-studio="c"]'));
+		
+		var $arrowActive = arrows[0];
+		var $studioHeadingActive = studios[0];
+		var $studioContentActive = [];
+		
+		console.log($arrowActive);
+		console.log(studios);
+		
+		columnB.hide();
+		columnC.hide();
+		
+		
+		$('[class*="__heading--studio-"]').each(function(){
 			
-			var studioVisible = cells.filter($('[data-studio="' + studioName + '"]'));
-			var studiosHidden = cells.not(studioVisible);
-			console.log('studioVisible', studioVisible);
-			console.log('studiosHidden', studiosHidden);
-/*
-			studioVisible.not('.cell__index, .cell_heading--blank').show();
-			studiosHidden.not('.cell__index, .cell_heading--blank').hide();
-*/
 			
-/*
-			if (studio === 'a') {
-				columnA.show();
-				columnB.hide();
-				columnC.hide();
-				columnA.toggleClass('visible');
-				columnB.toggleClass('hidden');
-				columnC.toggleClass('hidden');
-	
-				!arrow.hasClass('active') ? arrow.addClass('active') : arrow.removeClass('active');
-	
-			}
-			if (studio === 'b') {
-				columnA.hide();
-				columnB.show();
-				columnC.hide();
-			}
-			if (studio === 'c') {
-				columnA.hide();
-				columnB.hide();
-				columnC.show();
-			}
-*/
+			$(this).on('click', function(){
+				
+				var activeArrow = $(this).find('.studio__arrow');
+				var studioName = $(this).children('span:first-of-type').text().toLowerCase().split(' ')[1];
+				var studioHeading = activeArrow.closest('[class*="__heading--studio-"]');
+				var visibleCells = cells.filter($('[data-studio="' + studioName + '"]'));
+				var hiddenCells = cells.not(visibleCells);
+				
+				// arrows -> refactor using toggleClass('active')
+				activeArrow.show();
+				arrows.not(activeArrow).hide();
+				
+				// studio cells -> refactor using toggleClass('visible')
+				visibleCells.not('.cell__index, .cell__heading, .cell__heading--blank').show();
+				hiddenCells.not('.cell__index, .cell__heading, .cell__heading--blank').hide();
+				
+				console.log('visibleCells', visibleCells.not('.cell__index, .cell__heading--blank'));
+				console.log('hiddenCells', hiddenCells.not('.cell__index, .cell__heading--blank'));
+			});
 		});
-	});	
+	});
 }
-
-
-
 
 
 

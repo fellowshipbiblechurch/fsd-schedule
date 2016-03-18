@@ -131,6 +131,9 @@ body {
 		@include mq(mobile) {
 			font-size: $font-size-sm;
 			letter-spacing: $font-letter-spacing-sm;
+				
+			&.visible { display: table-cell; }
+			&.hidden { display: none; }
 		}
 	}
 	
@@ -170,8 +173,8 @@ body {
 			}
 			
 /*
-			&.visible { opacity: 1; }
-			&.hidden { opacity: 0; }
+			&.visible { color: $color-grey-light; }
+			&.hidden { display: none; }
 */
 		}
 		
@@ -183,17 +186,18 @@ body {
 			display: none;
 			
 			@include mq(mobile) {
+				display: none;
 				position: absolute;
 				bottom: 0;
 				left: calc(50% - 8px);
 				width: 0px;
 				height: 0px;
+// 				opacity: 0;
 				border: 8px solid transparent;
 				border-bottom-color: $color-grey-light;
+				@include transition(opacity $transition-fast);
 				
-				&.active {
-					display: inline;
-				}
+				&.active { display: inline; opacity: 1; }
 			}
 		}
 	}
