@@ -33,6 +33,10 @@ body {
 // 			width: 96%;
 			font-size: $font-size-lg;
 		}
+		
+		& table {
+			border-spacing: 0;
+		}
 	}
 	
 	&__day {
@@ -57,8 +61,8 @@ body {
 				vertical-align: middle;
 			}
 			
-			&__prev { background: #fff url('../img/arrow-left.png') no-repeat center center; }
-			&__next { background: #fff url('../img/arrow-right.png') no-repeat center center; }
+			&__prev { background: $color-white url('../img/arrow-left.png') no-repeat center center; }
+			&__next { background: $color-white url('../img/arrow-right.png') no-repeat center center; }
 			
 			&__prev,
 			&__next {
@@ -121,7 +125,7 @@ body {
 	&__index,
 	&__class {
 		padding: $padding-cell;
-		border: 1px solid #eee;
+		border: 1px solid $color-grey-light;
 		font-size: $font-size-sm;
 		letter-spacing: $font-letter-spacing-lg;
 		@include mq(mobile) {
@@ -152,6 +156,17 @@ body {
 				width: 23%;
 				font-size: $font-size-sm;
 				padding: 16px 0;
+				cursor: pointer;
+			  -webkit-touch-callout: none; /* iOS Safari */
+			  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+			  -moz-user-select: none;      /* Firefox */
+			  -ms-user-select: none;       /* IE/Edge */
+			  user-select: none;
+				@include transition(color $transition-fast);
+				
+				&:hover {
+					color: $color-grey-light;
+				}
 			}
 			
 /*
@@ -170,11 +185,11 @@ body {
 			@include mq(mobile) {
 				position: absolute;
 				bottom: 0;
-				left: 40%;
+				left: calc(50% - 8px);
 				width: 0px;
 				height: 0px;
 				border: 8px solid transparent;
-				border-bottom-color: #eee;
+				border-bottom-color: $color-grey-light;
 				
 				&.active {
 					display: inline;
@@ -186,7 +201,7 @@ body {
 	&__index {
 		width: 10%;
 		color: $color-white;
-		background-color: $color-index;
+		background-color: $color-grey-dark;
 		@extend %border-cancel-left;
 		@include mq(mobile) {
 			width: 19%;
@@ -230,7 +245,6 @@ body {
 	&__title,
 	&__times {
 		display: block;
-// 		font-size: $font-size-base;
 	}
 	
 	&__title {
@@ -242,9 +256,9 @@ body {
 	}
 	
 	&__times {
-		[class*="--studio-a"] & { color: #4d8a85; }
-		[class*="--studio-b"] & { color: #527f92; }
-		[class*="--studio-c"] & { color: #5f6c8d; }
+		[class*="--studio-a"] & { color: $color-text-studio-a; }
+		[class*="--studio-b"] & { color: $color-text-studio-b; }
+		[class*="--studio-c"] & { color: $color-text-studio-c; }
 	}
 }
 

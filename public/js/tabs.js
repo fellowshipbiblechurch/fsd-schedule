@@ -25,22 +25,28 @@ if ($('.schedule__wrapper').hasClass('mobile')) {
 		var arrow = $(this).find('.studio__arrow');
 		
 		$(this).on('click', function(){
-			var studio = $(this).children('span:first-of-type').text().toLowerCase().split(' ')[1];	
+			var studioName = $(this).children('span:first-of-type').text().toLowerCase().split(' ')[1];	
 			
+			var studioVisible = cells.filter($('[data-studio="' + studioName + '"]'));
+			var studiosHidden = cells.not(studioVisible);
+			console.log('studioVisible', studioVisible);
+			console.log('studiosHidden', studiosHidden);
+/*
+			studioVisible.not('.cell__index, .cell_heading--blank').show();
+			studiosHidden.not('.cell__index, .cell_heading--blank').hide();
+*/
+			
+/*
 			if (studio === 'a') {
 				columnA.show();
 				columnB.hide();
 				columnC.hide();
-	/*
 				columnA.toggleClass('visible');
 				columnB.toggleClass('hidden');
 				columnC.toggleClass('hidden');
-	*/
-	/*
-				!arrow.hasClass('active') ?
-					arrow.addClass('active') :
-					arrow.removeClass('active');
-	*/
+	
+				!arrow.hasClass('active') ? arrow.addClass('active') : arrow.removeClass('active');
+	
 			}
 			if (studio === 'b') {
 				columnA.hide();
@@ -52,6 +58,7 @@ if ($('.schedule__wrapper').hasClass('mobile')) {
 				columnB.hide();
 				columnC.show();
 			}
+*/
 		});
 	});	
 }

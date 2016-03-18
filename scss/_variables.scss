@@ -1,12 +1,20 @@
 /* # Variables
 ================================================== */
 
+
+$color-white: #fff;
+$color-grey-dark: #b1b1b1;
+$color-grey-light: #eee;
+
 $color-text-base: #373737;
+$color-text-studio-a: #4d8a85;
+$color-text-studio-b: #527f92;
+$color-text-studio-c: #5f6c8d;
+$color-bg-base: $color-white;
 $color-bg-studio-a: #a3d5d1;
 $color-bg-studio-b: #a3c6d5;
 $color-bg-studio-c: #afb8ce;
-$color-white: #fff;
-$color-index: #b1b1b1;
+$color-index: $color-grey-dark;
 
 $font-stack-sans-serif: 'Proxima Nova', 'Helvetica Neue', sans-serif;
 
