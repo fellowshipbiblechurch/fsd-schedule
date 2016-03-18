@@ -8,47 +8,53 @@ $('.schedule__panel').each(function(){
 });
 */
 
-var cells = $('td').each(function(){return $(this);});
-var columnA = cells.filter($('[data-studio="a"]'));
-var columnB = cells.filter($('[data-studio="b"]'));
-var columnC = cells.filter($('[data-studio="c"]'));
+if ($(window).width() < 568) {
+	$('.schedule__wrapper').addClass('mobile');
+}
 
-columnB.hide();
-columnC.hide();
-
-$('[class*="heading--studio-"]').each(function(){
-	var arrow = $(this).find('.studio__arrow');
+if ($('.schedule__wrapper').hasClass('mobile')) {
+	var cells = $('td').each(function(){return $(this);});
+	var columnA = cells.filter($('[data-studio="a"]'));
+	var columnB = cells.filter($('[data-studio="b"]'));
+	var columnC = cells.filter($('[data-studio="c"]'));
 	
-	$(this).on('click', function(){
-		var studio = $(this).children('span:first-of-type').text().toLowerCase().split(' ')[1];	
+	columnB.hide();
+	columnC.hide();
+	
+	$('[class*="heading--studio-"]').each(function(){
+		var arrow = $(this).find('.studio__arrow');
 		
-		if (studio === 'a') {
-			columnA.show();
-			columnB.hide();
-			columnC.hide();
-/*
-			columnA.toggleClass('visible');
-			columnB.toggleClass('hidden');
-			columnC.toggleClass('hidden');
-*/
-/*
-			!arrow.hasClass('active') ?
-				arrow.addClass('active') :
-				arrow.removeClass('active');
-*/
-		}
-		if (studio === 'b') {
-			columnA.hide();
-			columnB.show();
-			columnC.hide();
-		}
-		if (studio === 'c') {
-			columnA.hide();
-			columnB.hide();
-			columnC.show();
-		}
-	});
-});
+		$(this).on('click', function(){
+			var studio = $(this).children('span:first-of-type').text().toLowerCase().split(' ')[1];	
+			
+			if (studio === 'a') {
+				columnA.show();
+				columnB.hide();
+				columnC.hide();
+	/*
+				columnA.toggleClass('visible');
+				columnB.toggleClass('hidden');
+				columnC.toggleClass('hidden');
+	*/
+	/*
+				!arrow.hasClass('active') ?
+					arrow.addClass('active') :
+					arrow.removeClass('active');
+	*/
+			}
+			if (studio === 'b') {
+				columnA.hide();
+				columnB.show();
+				columnC.hide();
+			}
+			if (studio === 'c') {
+				columnA.hide();
+				columnB.hide();
+				columnC.show();
+			}
+		});
+	});	
+}
 
 
 

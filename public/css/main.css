@@ -39,6 +39,15 @@ body {
   text-align: center;
   text-transform: uppercase;
   box-sizing: border-box;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE/Edge */
+  user-select: none;
 }
 
 .schedule__day .day__prev, .schedule__day .day__name, .schedule__day .day__next {
@@ -115,7 +124,7 @@ body {
 .cell--blank, .cell__heading, .cell__index, .cell__class {
   padding: 12px 0;
   border: 1px solid #eee;
-  font-size: 16px;
+  font-size: 13px;
   letter-spacing: 1.5px;
 }
 
@@ -132,7 +141,7 @@ body {
 
 .cell__heading {
   position: relative;
-  font-size: 22px;
+  font-size: 16px;
   background-color: #555;
   border-color: #7b7b7b;
   text-transform: uppercase;
