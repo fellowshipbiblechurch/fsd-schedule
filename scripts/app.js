@@ -4,7 +4,10 @@
 $(document).ready(function(){
 	
 	// Create the Dance Schedule
-	createDanceSchedule();
+	if ($('.schedule__wrapper')) {
+		createDanceSchedule();
+		createMobileTabs();
+	}
 	
 /*
 	$(window).resize(function(){
@@ -15,16 +18,15 @@ $(document).ready(function(){
 });
 
 
+
+/* # Class Constructor and Dance Classes Object
+================================================== */
+
 function createDanceSchedule() {
 	
-	var $scheduleWrapper = $('.schedule__wrapper');
-	
-	if ($(window).width() < 568) {
-		$scheduleWrapper.addClass('mobile');
+	if ($(window).width() < 847) {
+		$('.schedule__wrapper').addClass('compressed');
 	}
-	
-	/* # Class Constructor and Dance Classes Object
-================================================== */
 	
 	function danceClass(day, studio, title, link, alphaHour, alphaMinute, omegaHour, omegaMinute) {
 		this.day = day;
@@ -331,16 +333,14 @@ function createDanceSchedule() {
 	};
 	
 	// set today as initial panel
-	function setToday() {
+	(function() {
 		var d = new Date();
 		var n = d.getDay();
 		var today = days[n - 1];
 		var todayStr = today[0].day;
 		$dayName.text(todayStr);
 		dayCurr = $dayName.text();
-	};
-	
-	setToday();
+	})();
 	
 	// find indeces of yesterday, today and tomorrow
 	for (var i=0; i < days.length; i++) {
@@ -432,14 +432,19 @@ function createDanceSchedule() {
 		updateDayMeta("next");
 		e.preventDefault();
 	});
+}
+
+
 	
 	
 /* # Tabs for Mobile Schedule
 ================================================== */
+
+function createMobileTabs() {
 	
-	if ($scheduleWrapper.hasClass('mobile')) {
+	if ($('.schedule__wrapper').hasClass('compressed')) {
 		
-		$scheduleWrapper.each(function(){
+		$('.schedule__wrapper').each(function(){
 			
 			var $cells = $('td').not('.cell__index, .cell__heading, .cell__heading--blank');
 			var $arrows = $('.studio__arrow');
@@ -452,7 +457,6 @@ function createDanceSchedule() {
 			
 			// initialize studio A as active and visible
 			studios[0].addClass('visible');
-			
 			$($arrows[0]).addClass('active');
 			$($headings[0]).addClass('active');
 			
@@ -472,12 +476,8 @@ function createDanceSchedule() {
 					var visibleCells = $cells.filter($('[data-studio="' + activeStudio + '"]'));
 					var hiddenCells = $cells.not(visibleCells);
 					
-					visibleCells.show();
-					visibleCells.addClass('visible');
-					visibleCells.removeClass('hidden');
-					hiddenCells.addClass('hidden');
-					hiddenCells.removeClass('visible');
-					hiddenCells.hide();
+					visibleCells.show().addClass('visible').removeClass('hidden');
+					hiddenCells.addClass('hidden').removeClass('visible').hide();
 					
 					e.preventDefault();
 				});

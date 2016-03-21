@@ -43,23 +43,18 @@
 // Media queries
 
 @mixin mq($break) {
-	@if $break == "mobile" {
+	@if $break == "compressed" {
+		@media (max-width: $brkpoint-compressed) {
+			@content;
+		}
+	}
+	@else if $break == "mobile" {
 		@media (max-width: $brkpoint-mobile) {
 			@content;
 		}
 	}
-	@else if $break == "tablet" {
-		@media (max-width: $brkpoint-tablet) {
-			@content;
-		}
-	}
-	@else if $break == "laptop" {
-		@media (max-width: $brkpoint-laptop) {
-			@content;
-		}
-	}
-	@else if $break == "desktop" {
-		@media (max-width: $brkpoint-desktop) {
+	@else if $break == "xs" {
+		@media (max-width: $brkpoint-xs) {
 			@content;
 		}
 	}

@@ -6,35 +6,25 @@
 				'functions',
 				'animations';
 
-body {
-	margin: 0;
-	padding: 0;
-}
-
-/*
-.squarespace-shell {
-	width: 100%;
-}
-*/
-
 .schedule {
 	
 	&__wrapper {
 		width: $width-schedule-wrapper-base;
 		max-width: $width-schedule-wrapper-max;
 		position: relative;
-		margin: 3em auto;
+		margin: 0 auto;
 		text-align: center;
 		font: $font-size-base/1 $font-stack-sans-serif;
 		color: $color-text-base;
 		overflow-x: hidden;
 		
-		@include mq(mobile) {
+		@include mq(compressed) {
 			font-size: $font-size-lg;
 		}
 		
 		& table {
-			border-spacing: 0;
+			border-spacing: 0 !important;
+			border-collapse: separate !important;
 		}
 	}
 	
@@ -60,8 +50,12 @@ body {
 				vertical-align: middle;
 			}
 			
-			&__prev { background: $color-white url('../img/arrow-left.png') no-repeat center center; }
-			&__next { background: $color-white url('../img/arrow-right.png') no-repeat center center; }
+			&__prev {
+				background: $color-white url('https://static1.squarespace.com/static/566f10be69a91a114755206b/t/56f045c1d51cd4973a4bbe11/1458587073316/arrow-left.png') no-repeat center center;
+			}
+			&__next {
+				background: $color-white url('https://static1.squarespace.com/static/566f10be69a91a114755206b/t/56f045c6d51cd4973a4bbeb7/1458587078138/arrow-right.png') no-repeat center center;
+			}
 			
 			&__prev,
 			&__next {
@@ -78,9 +72,8 @@ body {
 				font-size: $font-size-heading-base;
 				color: #555;
 				letter-spacing: $font-letter-spacing-lg;
-				@include mq(tablet) { width: 40%; }
-				@include mq(mobile) {
-					width: 58%;
+				@include mq(compressed) {
+					width: 62%;
 					font-size: $font-size-heading-sm;
 				}
 			}
@@ -110,11 +103,17 @@ body {
 	
 	&__panel {
 		float: left;
+		opacity: 0.25;
 		width: 20%;
 		border-spacing: 0;
+		@include transition(opacity $transition-slow);
+		
+		&.active {
+			opacity: 1;
+		}
 	}
 	
-	&__wrapper.mobile {}
+	&__wrapper.compressed {}
 }
 
 .cell {
@@ -127,7 +126,7 @@ body {
 		border: 1px solid $color-grey-light;
 		font-size: $font-size-sm;
 		letter-spacing: $font-letter-spacing-lg;
-		@include mq(mobile) {
+		@include mq(compressed) {
 			font-size: $font-size-sm;
 			letter-spacing: $font-letter-spacing-sm;
 		}
@@ -136,9 +135,10 @@ body {
 	&--blank {
 		background: $color-grey-med;
 		
-		@include mq(mobile) {
+		@include mq(compressed) {
 			display: none;
 			opacity: 0;
+			border-right: none !important;
 			@include transition(opacity $transition-fast);
 			transition-delay: $transition-delay;
 			
@@ -157,22 +157,16 @@ body {
 		text-transform: uppercase;
 		
 		&--blank {
-			width: 10%;
-			@include mq(tablet) {
-				width: 13%;
-			}
-			@include mq(mobile) {
-				width: 19%;
+			width: 13%;
+			@include mq(compressed) {
+				width: 22%;
 			}
 		}
 		
 		&[class*="--studio-"] {
-			width: 30%;
-			@include mq(tablet) {
-				width: 29%;
-			}
-			@include mq(mobile) {
-				width: 23%;
+			width: 29%;
+			@include mq(compressed) {
+				width: 26%;
 				font-size: $font-size-sm;
 				padding: 16px 0;
 				cursor: pointer;
@@ -186,6 +180,9 @@ body {
 				&:hover { color: $color-grey-light; }
 				&.active { color: $color-grey-light; }
 			}
+			@include mq(xs) {
+				font-size: $font-size-xs;
+			}
 		}
 		
 		&--studio-a { color: $color-bg-studio-a; }
@@ -195,7 +192,7 @@ body {
 		.studio__arrow {
 			display: none;
 			
-			@include mq(mobile) {
+			@include mq(compressed) {
 				display: inline;
 				position: absolute;
 				bottom: 0;
@@ -213,32 +210,35 @@ body {
 	}
 	
 	&__index {
-		width: 10%;
+		width: 13%;
 		color: $color-white;
 		background-color: $color-grey-dark;
 		@extend %border-cancel-left;
-		@include mq(tablet) {
-			width: 13%;
-		}
-		@include mq(mobile) {
-			width: 19%;
+		@include mq(compressed) {
+			width: 22%;
 			font-size: $font-size-sm;
+		}
+		@include mq(xs) {
+			font-size: $font-size-xs;
 		}
 	}
 	
 	&__class {
-		width: 30%;
+		width: 29%;
 		padding: 0;
 		vertical-align: top;
 		@include transition(transform $transition-fast, opacity $transition-fast, box-shadow $transition-fast, border $transition-fast);
-// 		transition-delay: $transition-delay;
-		@include mq(tablet) {
-			width: 29%;
+		&:hover {
+			@include transform(scale(1.014,1.01));
+			box-shadow: 0 2px 7px -1px rgba(0,0,0,.45);
+			border: 1px solid rgba(255,255,255,.85) !important;
 		}
-		@include mq(mobile) {
+		
+		@include mq(compressed) {
 			display: none;
-			width: 69%;
+			width: 78%;
 			opacity: 0;
+			border-right: none !important;
 			
 			&.visible {
 				display: table-cell;
@@ -253,11 +253,13 @@ body {
 			}
 		}
 		
-		&:hover {
-			-webkit-transform: scale(1.01);
-			transform: scale(1.014,1.01);
-			box-shadow: 0 2px 7px -1px rgba(0,0,0,.45);
-			border: 1px solid rgba(255,255,255,.85) !important;
+		@include mq(mobile) {
+			&:hover {
+				@include transform(none);
+				box-shadow: none;
+				border-color: $color-grey-light;
+				border-right: none !important;
+			}
 		}
 		
 		&--studio-a { background-color: $color-bg-studio-a; }
@@ -277,6 +279,13 @@ body {
 	&__title,
 	&__times {
 		display: block;
+		@include transition(color $transition-fast);
+		
+		.cell__class:hover & {
+			@include mq(mobile) {
+				color: #fff;
+			}
+		}
 	}
 	
 	&__title {
