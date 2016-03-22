@@ -408,14 +408,17 @@ function createDanceSchedule() {
 			var emptyRowNext = $(this).nextUntil('tr.row--empty').length;
 			if (emptyRowPrev === 0 && emptyRowNext === 0) {
 				$(this).addClass('row--trimmed');
+				$(this).prev('tr.row--empty').not('.row--trimmed').addClass('row--empty--bottom');
+				$(this).next('tr.row--empty').not('.row--trimmed').addClass('row--empty--top');
+				$(this).detach();
 			}
 		});
 		
-/*
-		$('tr.row--empty').each(function(){
-			$(this).removeClass('row--empty')
+		$('tr.row--empty--bottom').each(function(){
+			$(this).after('<tr class="row--empty--spacer"><td><td><td></tr>');
 		});
-*/
+		
+		$('tr.row--empty').removeClass('row--empty');
 	})();
 	
 	

@@ -333,13 +333,10 @@ td[class^="cell"] {
 	@extend %border-cancel-right;
 }
 
-.schedule__panel.active tr.row--trimmed {
-	opacity: 0;
-	display: none;
-	
-	&:first-of-type {
-		display: table-row;
-	}
+.row--empty {
+	&--bottom td { @extend %border-cancel-bottom; }
+	&--top td { @extend %border-cancel-top; }
+	&--spacer td { padding: $padding-cell; }
 }
 
 .clearfix:after {
@@ -347,4 +344,3 @@ td[class^="cell"] {
   display: table;
   clear: both;
 }
-
