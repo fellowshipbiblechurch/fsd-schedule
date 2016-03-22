@@ -336,7 +336,19 @@ td[class^="cell"] {
 .row--empty {
 	&--bottom td { @extend %border-cancel-bottom; }
 	&--top td { @extend %border-cancel-top; }
-	&--spacer td { padding: $padding-cell; }
+	&--spacer td {
+		font-size: $font-size-lg;
+		padding: $padding-cell-lg;
+		color: $color-grey-dark;
+		
+		.text {
+			margin: 0 0 6px 0;
+			padding: 0;
+			font-size: $font-size-xs;
+			letter-spacing: $font-letter-spacing-md;
+			text-transform: uppercase;
+		}
+	}
 }
 
 .clearfix:after {
