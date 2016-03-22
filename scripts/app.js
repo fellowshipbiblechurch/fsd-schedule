@@ -256,7 +256,6 @@ function createDanceSchedule() {
 	 */
 	 
 	function trimEmptyRows() {
-		var emptyRowHTML = '';
 		
 		// row is empty if it has 3 .cell--blank children
 		$('tr').each(function(){
@@ -270,22 +269,22 @@ function createDanceSchedule() {
 			var emptyPrev = $(this).prevUntil('tr.row--empty').length;
 			var emptyNext = $(this).nextUntil('tr.row--empty').length;
 			if (emptyPrev === 0 && emptyNext === 0) {
-				$(this).addClass('row--trim');
-				$(this).prev('tr.row--empty').not('.row--trim').addClass('row--empty--bottom');
-				$(this).next('tr.row--empty').not('.row--trim').addClass('row--empty--top');
-// 				$(this).detach();
+				$(this).detach();
 			}
 		});
 		
-		// trim extraneous rows
-// 		$('tr.row--trim').detach();
+		$('tr.row--empty + tr.row--empty').addClass('row--empty--top');
+		$('tr.row--empty + tr.row--empty').prev('tr.row--empty').addClass('row--empty--bottom');
 		
 		// add spacer row
 		$('tr.row--empty--bottom').each(function(){
+			var emptyRowHTML = '';
+			
 			emptyRowHTML += '<tr class="row--empty--spacer">';
 			emptyRowHTML += '<td colspan="4">';
 			emptyRowHTML += '<h6 class="text">No classes scheduled</h6>';
-			emptyRowHTML += '<i class="fa fa-long-arrow-down"></i></td>';
+			emptyRowHTML += '<i class="fa fa-long-arrow-down"></i>';
+			emptyRowHTML += '</td>';
 			emptyRowHTML += '</tr>';
 			
 			$(this).after(emptyRowHTML);
