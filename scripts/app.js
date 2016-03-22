@@ -56,59 +56,73 @@ function createDanceSchedule() {
 		new danceClass("Monday", "A", "Pointe II/III", "/ballet", 17, 30, 18, 15),
 		new danceClass("Monday", "A", "Contemporary IV", "/contemporary", 18, 15, 19, 30),
 		new danceClass("Monday", "A", "Contemporary III", "/contemporary", 19, 30, 20, 45),
-		new danceClass("Monday", "B", "Shuffle II/III", "/c", 13, 15, 14, 45),
-		new danceClass("Monday", "B", "Shuffle II/III", "/c", 13, 15, 14, 45),
-		new danceClass("Monday", "B", "Shuffle II/III", "/c", 13, 15, 14, 45),
-		new danceClass("Monday", "B", "Lindy", "/c", 15, 0, 16, 30),
-		new danceClass("Monday", "C", "Lindy", "/c", 15, 0, 16, 30),
-		new danceClass("Monday", "C", "Lindy", "/c", 15, 0, 16, 30),
-		new danceClass("Monday", "C", "Lindy", "/c", 15, 0, 16, 30),
-		new danceClass("Monday", "C", "Lindy", "/c", 15, 0, 16, 30)
+		new danceClass("Monday", "B", "Intro to Ballet I", "/ballet", 16, 15, 17, 15),
+		new danceClass("Monday", "B", "Contemporary I A", "/contemporary", 17, 15, 18, 15),
+		new danceClass("Monday", "B", "Ballet II", "/ballet", 18, 15, 19, 45),
+		new danceClass("Monday", "B", "Pre-Pointe", "/ballet", 19, 45, 20, 30),
+		new danceClass("Monday", "C", "Intro to Ballet II", "/ballet", 16, 15, 17, 15),
+		new danceClass("Monday", "C", "Open Level Ballet II", "/ballet", 17, 15, 18, 30),
+		new danceClass("Monday", "C", "Hip Hop III", "/hip-hop", 18, 30, 19, 30),
+		new danceClass("Monday", "C", "Lyrical Worship (12 & up)", "/lyrical", 19, 30, 20, 30)
 	];
 	
 	var tuesday = [
-		new danceClass("Tuesday", "A", "Richard Simmons Rumba", "/a", 14, 30, 15, 0),
-		new danceClass("Tuesday", "A", "Lyrical Quilting III", "/a", 15, 0, 15, 45),
-		new danceClass("Tuesday", "A", "What Da Foxtrot Say?", "/b", 15, 45, 17, 15),
-		new danceClass("Tuesday", "B", "Ballet in Jesus' Time", "/b", 13, 45, 15, 15),
-		new danceClass("Tuesday", "B", "Jazz Tap with Elton", "/b", 15, 15, 16, 30),
-		new danceClass("Tuesday", "C", "Touchdown Celebrations I", "/c", 14, 45, 17, 0)
+		new danceClass("Tuesday", "A", "Creative Movement", "/creative-movement", 14, 15, 15, 15),
+		new danceClass("Tuesday", "A", "Ballet III", "/ballet", 16, 0, 17, 30),
+		new danceClass("Tuesday", "A", "Pointe I", "/ballet", 17, 30, 18, 15),
+		new danceClass("Tuesday", "A", "Jazz III", "/jazz", 18, 15, 19, 15),
+		new danceClass("Tuesday", "A", "Jazz II", "/jazz", 19, 15, 20, 15),
+		new danceClass("Tuesday", "B", "Jazz I", "/jazz", 16, 0, 17, 0),
+		new danceClass("Tuesday", "B", "Tap I", "/tap", 17, 0, 18, 0),
+		new danceClass("Tuesday", "B", "Tap II", "/tap", 18, 15, 19, 15),
+		new danceClass("Tuesday", "B", "Tap III", "/tap", 19, 15, 20, 15),
+		new danceClass("Tuesday", "C", "Intro to Ballet", "/ballet", 16, 0, 17, 0),
+		new danceClass("Tuesday", "C", "Ballet I A", "/ballet", 17, 0, 18, 15),
+		new danceClass("Tuesday", "C", "Lyrical Worship (Ages 8-12)", "/lyrical", 18, 15, 19, 15)
 	];
 	
 	var wednesday = [
-		new danceClass("Wednesday", "A", "It Takes Tutu to Tango", "/a", 12, 45, 14, 45),
-		new danceClass("Wednesday", "B", "Advanced Swaying", "/b", 12, 30, 13, 30),
-		new danceClass("Wednesday", "B", "Waltz Whitman II/III", "/b", 13, 30, 15, 30),
-		new danceClass("Wednesday", "C", "Dancing for Baptists I", "/c", 12, 30, 13, 0),
-		new danceClass("Wednesday", "C", "Chips and Salsa", "/c", 13, 0, 14, 0),
-		new danceClass("Wednesday", "C", "Lemon Merengue", "/c", 14, 0, 15, 0)
+		new danceClass("Wednesday", "A", "Open Advanced Ballet", "/ballet", 12, 0, 13, 30),
+		new danceClass("Wednesday", "A", "Open Advanced Pointe", "/ballet", 13, 30, 14, 0),
+		new danceClass("Wednesday", "A", "Ballet II", "/ballet", 16, 0, 17, 30),
+		new danceClass("Wednesday", "A", "Intro to Ballet II", "/ballet", 17, 30, 18, 30),
+		new danceClass("Wednesday", "B", "Intro to Ballet I", "/ballet", 13, 0, 14, 0),
+		new danceClass("Wednesday", "B", "Ballet I", "/ballet", 14, 0, 15, 15),
+		new danceClass("Wednesday", "B", "Intro to Ballet I", "/ballet", 16, 15, 17, 15),
+		new danceClass("Wednesday", "B", "Creative Movement", "/creative-movement", 17, 15, 18, 15),
+		new danceClass("Wednesday", "C", "Intro to Ballet II", "/ballet", 13, 0, 14, 0),
+		new danceClass("Wednesday", "C", "Creative Movement", "/creative-movement", 14, 0, 15, 0),
+		new danceClass("Wednesday", "C", "Inside Out: Teen", "/special-needs", 15, 30, 16, 15),
+		new danceClass("Wednesday", "C", "Inside Out: Elementary", "/special-needs", 16, 30, 17, 0),
+		new danceClass("Wednesday", "C", "Hip-Hop IV", "/hip-hop", 17, 0, 18, 0),
+		new danceClass("Wednesday", "C", "Hip-Hop II", "/hip-hop", 18, 0, 19, 0)
 	];
 	
 	var thursday = [
-		new danceClass("Thursday", "A", "Richard Simmons Rumba", "/a", 14, 30, 15, 30),
-		new danceClass("Thursday", "A", "Lyrical Quilting III", "/a", 15, 30, 17, 0),
-		new danceClass("Thursday", "A", "What Da Foxtrot Say?", "/b", 17, 0, 19, 0),
-		new danceClass("Thursday", "B", "Ballet in Jesus' Time", "/b", 13, 45, 14, 45),
-		new danceClass("Thursday", "B", "Jazz Tap with Elton", "/b", 14, 45, 16, 30),
-		new danceClass("Thursday", "C", "Touchdown Celebrations I", "/c", 16, 0, 18, 30)
+		new danceClass("Thursday", "A", "Intro to Ballet I", "/ballet", 16, 0, 17, 0),
+		new danceClass("Thursday", "A", "Ballet I B", "/ballet", 17, 0, 18, 15),
+		new danceClass("Thursday", "A", "Ballet IV/V", "/ballet", 18, 15, 19, 45),
+		new danceClass("Thursday", "A", "Pointe II/III", "/ballet", 19, 45, 20, 30),
+		new danceClass("Thursday", "B", "Open Level Ballet I", "/ballet", 16, 0, 17, 15),
+		new danceClass("Thursday", "B", "Ballet III", "/ballet", 17, 15, 18, 45),
+		new danceClass("Thursday", "B", "Pointe", "/ballet", 18, 45, 19, 30),
+		new danceClass("Thursday", "B", "Beginning Pointe", "/ballet", 19, 30, 20, 30),
+		new danceClass("Thursday", "C", "Conditioning for Dancers", "/", 16, 0, 17, 0),
+		new danceClass("Thursday", "C", "Ballet I", "/ballet", 17, 0, 18, 15),
+		new danceClass("Thursday", "C", "Contemporary I B", "/contemporary", 18, 15, 19, 15),
+		new danceClass("Thursday", "C", "Contemporary II", "/contemporary", 19, 15, 20, 15)
 	];
 	
 	var friday = [
-		new danceClass("Friday", "A", "Waltz The Big Deal", "/a", 12, 0, 13, 45),
-		new danceClass("Friday", "A", "Beebop XI", "/a", 14, 0, 15, 30),
-		new danceClass("Friday", "B", "Advanced Polka", "/b", 12, 0, 13, 30),
-		new danceClass("Friday", "B", "Beginner's Dougie", "/b", 13, 30, 15, 0),
-		new danceClass("Friday", "C", "Shuffle II/III", "/c", 13, 15, 14, 45),
-		new danceClass("Friday", "C", "Lindy", "/c", 15, 0, 16, 30)
+		new danceClass("Friday", "A", "Creative Movement", "/creative-movement", 10, 0, 11, 0),
+		new danceClass("Friday", "A", "Creative Movement", "/creative-movement", 11, 0, 12, 0),
+		new danceClass("Friday", "A", "Intro to Hip-Hop", "/hip-hop", 16, 30, 17, 30),
+		new danceClass("Friday", "A", "Hip-Hop I", "/hip-hop", 17, 30, 18, 30)
 	];
 	
 	var saturday = [
-		new danceClass("Saturday", "A", "Waltz The Big Deal", "/a", 12, 0, 13, 45),
-		new danceClass("Saturday", "A", "Beebop XI", "/a", 14, 0, 15, 30),
-		new danceClass("Saturday", "B", "Advanced Polka", "/b", 12, 0, 13, 30),
-		new danceClass("Saturday", "B", "Beginner's Dougie", "/b", 13, 30, 15, 0),
-		new danceClass("Saturday", "C", "Shuffle II/III", "/c", 13, 15, 14, 45),
-		new danceClass("Saturday", "C", "Lindy", "/c", 15, 0, 16, 30)
+		new danceClass("Saturday", "A", "In Motion Dance Company", "/in-motion", 9, 0, 12, 30),
+		new danceClass("Saturday", "B", "Junior Company", "/junior-company", 9, 0, 12, 30)
 	];
 	
 	
@@ -244,7 +258,7 @@ function createDanceSchedule() {
 	var createClassCell = function(currentTime, studioArray, column) {
 		
 		// initialize cell as empty
-		var isEmpty = true,
+		var isBlankCell = true,
 				cellHTML;
 		
 		for (var i=0; i < studioArray.length; i++) {
@@ -266,7 +280,7 @@ function createDanceSchedule() {
 			}
 			
 			if(timeAlpha == currentTime) {
-				isEmpty = false;
+				isBlankCell = false;
 				
 				cellHTML = '<td class="cell__class cell__class--studio-' + studio;
 				cellHTML += studio === 'c' ? ' cell--border-cancel-right' : '';
@@ -280,18 +294,17 @@ function createDanceSchedule() {
 				break;
 				
 			} else if (timeAlpha < currentTime && timeOmega > currentTime) {
-				isEmpty = false;
+				isBlankCell = false;
 				break;
 			}
 		}
 		
-		if(isEmpty) {
+		if(isBlankCell) {
 			cellHTML = '<td class="cell--blank';
 			cellHTML += studio === 'c' ? ' cell--border-cancel-right"' : '"';
 			cellHTML += ' data-studio="' + dataStudio;
 			cellHTML += '">&nbsp;</td>';
 		}
-		
 		return cellHTML;
 	}
 	
@@ -382,6 +395,27 @@ function createDanceSchedule() {
 			$(panelId).html(buildSchedule(dayArray));
 		}
 		formatClassTimes();
+		
+		// clean out groups of > 6 empty rows
+		$('tr').each(function(){
+			if ($(this).children('.cell--blank').length === 3) {
+				$(this).addClass('row--empty');
+			}
+		});
+		
+		$('tr.row--empty').each(function(){
+			var emptyRowPrev = $(this).prevUntil('tr.row--empty').length;
+			var emptyRowNext = $(this).nextUntil('tr.row--empty').length;
+			if (emptyRowPrev === 0 && emptyRowNext === 0) {
+				$(this).addClass('row--trimmed');
+			}
+		});
+		
+/*
+		$('tr.row--empty').each(function(){
+			$(this).removeClass('row--empty')
+		});
+*/
 	})();
 	
 	
