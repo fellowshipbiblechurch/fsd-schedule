@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build-css": "node-sass --output-style compressed --include-path scss scss/main.scss dist/public/css/fsd-schedule.min.css",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "minify-js": "uglifyjs scripts/app.js -o dist/public/js/fsd-schedule.min.js",
-    "build": "npm run build-css && npm run minify-js"
+    "watch": "nodemon --watch scss --watch scripts -e scss,js -x \"npm run build-css && npm run minify-js\"",
+    "build": "npm run watch"
   },
   "author": "",
   "license": "ISC",

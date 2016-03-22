@@ -49,14 +49,20 @@ function createDanceSchedule() {
 		}
 	}
 	
-	// object of days holding class listings
+	// object of week holding class listings
 	
 	var monday = [
-		new danceClass("Monday", "A", "Waltz The Big Deal", "/a", 12, 0, 13, 45),
-		new danceClass("Monday", "A", "Beebop XI", "/a", 14, 0, 15, 30),
-		new danceClass("Monday", "B", "Advanced Polka", "/b", 12, 0, 13, 30),
-		new danceClass("Monday", "B", "Beginner's Dougie", "/b", 13, 30, 15, 0),
-		new danceClass("Monday", "C", "Shuffle II/III", "/c", 13, 15, 14, 45),
+		new danceClass("Monday", "A", "Ballet IV/V", "/ballet", 16, 0, 17, 30),
+		new danceClass("Monday", "A", "Pointe II/III", "/ballet", 17, 30, 18, 15),
+		new danceClass("Monday", "A", "Contemporary IV", "/contemporary", 18, 15, 19, 30),
+		new danceClass("Monday", "A", "Contemporary III", "/contemporary", 19, 30, 20, 45),
+		new danceClass("Monday", "B", "Shuffle II/III", "/c", 13, 15, 14, 45),
+		new danceClass("Monday", "B", "Shuffle II/III", "/c", 13, 15, 14, 45),
+		new danceClass("Monday", "B", "Shuffle II/III", "/c", 13, 15, 14, 45),
+		new danceClass("Monday", "B", "Lindy", "/c", 15, 0, 16, 30),
+		new danceClass("Monday", "C", "Lindy", "/c", 15, 0, 16, 30),
+		new danceClass("Monday", "C", "Lindy", "/c", 15, 0, 16, 30),
+		new danceClass("Monday", "C", "Lindy", "/c", 15, 0, 16, 30),
 		new danceClass("Monday", "C", "Lindy", "/c", 15, 0, 16, 30)
 	];
 	
@@ -96,16 +102,27 @@ function createDanceSchedule() {
 		new danceClass("Friday", "C", "Lindy", "/c", 15, 0, 16, 30)
 	];
 	
+	var saturday = [
+		new danceClass("Saturday", "A", "Waltz The Big Deal", "/a", 12, 0, 13, 45),
+		new danceClass("Saturday", "A", "Beebop XI", "/a", 14, 0, 15, 30),
+		new danceClass("Saturday", "B", "Advanced Polka", "/b", 12, 0, 13, 30),
+		new danceClass("Saturday", "B", "Beginner's Dougie", "/b", 13, 30, 15, 0),
+		new danceClass("Saturday", "C", "Shuffle II/III", "/c", 13, 15, 14, 45),
+		new danceClass("Saturday", "C", "Lindy", "/c", 15, 0, 16, 30)
+	];
 	
 	
-	// populate days array and initialize studios
-	var days = [
+	
+	// populate week array and initialize studios
+	var week = [
 				monday,
 				tuesday,
 				wednesday,
 				thursday,
-				friday
+				friday,
+				saturday
 			],
+			numDays = week.length,
 			studioA,
 			studioB,
 			studioC;
@@ -116,7 +133,7 @@ function createDanceSchedule() {
 		studioB = [];
 		studioC = [];
 		
-		// loop through days and pick out classes in each studio
+		// loop through week and pick out classes in each studio
 		for (var i=0; i < day.length; i++) {
 			var studio = day[i].studio;
 			
@@ -315,7 +332,7 @@ function createDanceSchedule() {
 			panelPosNew,
 			translation,
 			width_Schedule = $(".schedule__wrapper").width(),
-			width_Panels = width_Schedule * days.length,
+			width_Panels = width_Schedule * numDays,
 			width_Panel = width_Schedule,
 			$dayName = $('#dayName'),
 			$panels = $(".schedule__panels");
@@ -336,15 +353,15 @@ function createDanceSchedule() {
 	(function() {
 		var d = new Date();
 		var n = d.getDay();
-		var today = days[n - 1];
+		var today = week[n - 1];
 		var todayStr = today[0].day;
 		$dayName.text(todayStr);
 		dayCurr = $dayName.text();
 	})();
 	
 	// find indeces of yesterday, today and tomorrow
-	for (var i=0; i < days.length; i++) {
-		if(dayCurr === days[i][0].day) {
+	for (var i=0; i < numDays; i++) {
+		if(dayCurr === week[i][0].day) {
 			dayPrevIndex = i - 1;
 			dayCurrIndex = i;
 			dayNextIndex = i + 1;
@@ -353,13 +370,13 @@ function createDanceSchedule() {
 	}
 	
 	/**
-	 *	Construct panels by looping through days array, then format times
+	 *	Construct panels by looping through week array, then format times
 	 */
 	
 	(function() {
 		var dayArray, dayName, panelId;
-		for (var i=0; i < days.length; i++) {
-			dayArray = days[i];
+		for (var i=0; i < numDays; i++) {
+			dayArray = week[i];
 			dayName = dayArray[0].day.toLowerCase();
 			panelId = "#" + dayName;
 			$(panelId).html(buildSchedule(dayArray));
@@ -379,14 +396,14 @@ function createDanceSchedule() {
 		if (direction === "next") { dayCurrIndex += 1; }
 		
 		// check if updated dayCurrIndex is out of bounds before proceeding
-		dayCurrIndex < 0 || dayCurrIndex > 4 ?
-			dayCurrIndex = dayCurrIndex < 0 ? 4 : 0 : dayCurrIndex;
+		dayCurrIndex < 0 || dayCurrIndex > numDays - 1 ?
+			dayCurrIndex = dayCurrIndex < 0 ? numDays - 1 : 0 : dayCurrIndex;
 		
 		// update panelPosNew from adjusted dayCurrIndex
 		panelPosNew = -1 * width_Panel * dayCurrIndex;
 		
 		// update dayCurr and #dayName
-		dayCurr = days[dayCurrIndex][0].day;
+		dayCurr = week[dayCurrIndex][0].day;
 		$dayName.text(dayCurr);
 		
 		/* Update dayPrevIndex & dayPrevIndex based on new dayCurrIndex */
@@ -394,12 +411,12 @@ function createDanceSchedule() {
 		dayNextIndex = dayCurrIndex + 1;
 		
 		// if dayCurr = Monday, adjust indeces and set new dayPrev
-		dayPrevIndex = dayPrevIndex === -1 ? dayPrevIndex += 5 : dayPrevIndex;
-		dayPrev = days[dayPrevIndex][0].day;
+		dayPrevIndex = dayPrevIndex === -1 ? dayPrevIndex += numDays : dayPrevIndex;
+		dayPrev = week[dayPrevIndex][0].day;
 		
 		// if dayCurr = Friday, adjust indeces and set new dayNext
-		dayNextIndex = dayNextIndex === 5 ? dayNextIndex -= 5 : dayNextIndex;
-		dayNext = days[dayNextIndex][0].day;
+		dayNextIndex = dayNextIndex === numDays ? dayNextIndex -= numDays : dayNextIndex;
+		dayNext = week[dayNextIndex][0].day;
 		
 		// update title attributes for buttons
 		$('.day__prev').attr("title","View " + dayPrev + "'s Classes");

@@ -104,7 +104,7 @@
 	&__panel {
 		float: left;
 		opacity: 0.25;
-		width: 20%;
+		width: $width-panel-base / $num-panels;
 		border-spacing: 0;
 		@include transition(opacity $transition-slow);
 		
