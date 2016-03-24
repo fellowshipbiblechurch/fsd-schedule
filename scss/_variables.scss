@@ -45,6 +45,13 @@ $width-panel-max: 100%;
 $width-panels-base: $width-panel-base * $num-panels;
 $width-panels-max: $width-panel-max * $num-panels;
 
+$width-cell-ind-sm: 13%;
+$width-cell-cla-sm: (100% - $width-cell-ind-sm) / 3;
+$width-cell-stu-sm: $width-cell-cla-sm;
+$width-cell-ind-lg: 22%;
+$width-cell-cla-lg: 100% - $width-cell-ind-lg;
+$width-cell-stu-lg: (100% - $width-cell-ind-lg) / 3;
+
 $padding-cell: 12px 0;
 $padding-cell-lg: 20px 0;
 

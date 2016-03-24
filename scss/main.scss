@@ -133,9 +133,11 @@
 	}
 	
 	&--blank {
+		width: $width-cell-cla-sm;
 		background: $color-grey-med;
 		
 		@include mq(compressed) {
+			width: $width-cell-cla-lg;
 			display: none;
 			opacity: 0;
 			border-right: none !important;
@@ -157,16 +159,16 @@
 		text-transform: uppercase;
 		
 		&--blank {
-			width: 13%;
+			width: $width-cell-ind-sm;
 			@include mq(compressed) {
-				width: 22%;
+				width: $width-cell-ind-lg;
 			}
 		}
 		
 		&[class*="--studio-"] {
-			width: 29%;
+			width: $width-cell-stu-sm;
 			@include mq(compressed) {
-				width: 26%;
+				width: $width-cell-stu-lg;
 				font-size: $font-size-sm;
 				padding: 16px 0;
 				cursor: pointer;
@@ -210,12 +212,12 @@
 	}
 	
 	&__index {
-		width: 13%;
+		width: $width-cell-ind-sm;
 		color: $color-white;
 		background-color: $color-grey-dark;
 		@extend %border-cancel-left;
 		@include mq(compressed) {
-			width: 22%;
+			width: $width-cell-ind-lg;
 			font-size: $font-size-sm;
 		}
 		@include mq(xs) {
@@ -224,7 +226,7 @@
 	}
 	
 	&__class {
-		width: 29%;
+		width: $width-cell-cla-sm;
 		padding: 0;
 		vertical-align: top;
 		@include transition(transform $transition-fast, opacity $transition-fast, box-shadow $transition-fast, border $transition-fast);
@@ -236,7 +238,7 @@
 		
 		@include mq(compressed) {
 			display: none;
-			width: 78%;
+			width: $width-cell-cla-lg;
 			opacity: 0;
 			border-right: none !important;
 			
@@ -340,6 +342,7 @@ td[class^="cell"] {
 		font-size: $font-size-lg;
 		padding: $padding-cell-lg;
 		color: $color-grey-dark;
+		background-color: #f7f7f7;
 		
 		.text {
 			margin: 0 0 6px 0;
