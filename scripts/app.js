@@ -117,12 +117,15 @@ function createDanceSchedule() {
 		new danceClass("Friday", "A", "Creative Movement", "/creative-movement", 10, 0, 11, 0),
 		new danceClass("Friday", "A", "Creative Movement", "/creative-movement", 11, 0, 12, 0),
 		new danceClass("Friday", "A", "Intro to Hip-Hop", "/hip-hop", 16, 30, 17, 30),
-		new danceClass("Friday", "A", "Hip-Hop I", "/hip-hop", 17, 30, 18, 30)
+		new danceClass("Friday", "A", "Hip-Hop I", "/hip-hop", 17, 30, 18, 30),
+		new danceClass("Friday", "B"),
+		new danceClass("Friday", "C")
 	];
 	
 	var saturday = [
 		new danceClass("Saturday", "A", "In Motion Dance Company", "/in-motion", 9, 0, 12, 30),
-		new danceClass("Saturday", "B", "Junior Company", "/junior-company", 9, 0, 12, 30)
+		new danceClass("Saturday", "B", "Junior Company", "/junior-company", 9, 0, 12, 30),
+		new danceClass("Saturday", "C")
 	];
 	
 	
