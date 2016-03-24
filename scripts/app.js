@@ -11,10 +11,12 @@ $(document).ready(function(){
 	
 /*
 	$(window).resize(function(){
-		createDanceSchedule();
+		if ($(window).width() > 768) {
+			createDanceSchedule();
+			createMobileTabs();
+		}
 	});
 */
-	
 });
 
 
@@ -293,7 +295,7 @@ function createDanceSchedule() {
 			$(this).after(emptyRowHTML);
 		});
 		
-		// clean up class attr
+		// clean up
 		$('tr.row--empty').removeClass('row--empty');
 	}
 	
