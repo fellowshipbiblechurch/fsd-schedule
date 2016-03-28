@@ -302,6 +302,8 @@
 		[class*="--studio-a"] & { color: $color-text-studio-a; }
 		[class*="--studio-b"] & { color: $color-text-studio-b; }
 		[class*="--studio-c"] & { color: $color-text-studio-c; }
+		
+		.cell__spacer & { display: inline; }
 	}
 }
 
@@ -343,6 +345,8 @@ td[class^="cell"] {
 		padding: $padding-cell-lg;
 		color: $color-grey-dark;
 		background-color: #f7f7f7;
+		border-left: 1px dashed #f2f2f2;
+		border-right: 1px dashed #f2f2f2;
 		
 		.text {
 			margin: 0 0 6px 0;

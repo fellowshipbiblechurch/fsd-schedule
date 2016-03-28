@@ -233,30 +233,6 @@ function createDanceSchedule() {
 	
 	
 	/**
-	 *	Reformat meridiems
-	 */
-	
-	function formatClassTimes() {
-		var times = document.getElementsByClassName("class__times");
-		
-		for (var i=0; i < times.length; i++) {
-			var text = times[i].innerHTML;
-			var timeAlpha = text.split("-")[0];
-			var timeOmega = text.split("-")[1];
-			var meridiemAlpha = timeAlpha.split("am")[1] === "" ? "am" : "pm";
-			var meridiemOmega = timeOmega.split("am")[1] === "" ? "am" : "pm";
-			
-			var formattedTime =
-				meridiemAlpha === meridiemOmega ?
-				timeAlpha.split(meridiemAlpha)[0] + "-" + timeOmega :
-				timeAlpha + "-" + timeOmega;
-			
-			times[i].innerHTML = formattedTime;
-		}
-	}
-	
-	
-	/**
 	 *	Trim out large chunks of empty rows
 	 */
 	 
@@ -283,11 +259,17 @@ function createDanceSchedule() {
 		
 		// add spacer row
 		$('tr.row--empty--bottom').each(function(){
+		
+			// get previous and next class times
+			var classPrevOmega = $(this).find('.cell__index').text();
+			var classNextAlpha = $(this).next('.row--empty--top').next('tr').find('.cell__index').text();
+			
 			var emptyRowHTML = '';
 			
 			emptyRowHTML += '<tr class="row--empty--spacer">';
-			emptyRowHTML += '<td colspan="4">';
-			emptyRowHTML += '<h6 class="text">No classes scheduled</h6>';
+			emptyRowHTML += '<td class="cell__spacer" colspan="4">';
+			emptyRowHTML += '<h6 class="text">No ' + $(this).closest('.schedule__panel').attr('id') + ' classes from ';
+			emptyRowHTML += '<span class="class__times">' + classPrevOmega + '-' + classNextAlpha + '</span></h6>';
 			emptyRowHTML += '<i class="fa fa-long-arrow-down"></i>';
 			emptyRowHTML += '</td>';
 			emptyRowHTML += '</tr>';
@@ -297,6 +279,30 @@ function createDanceSchedule() {
 		
 		// clean up
 		$('tr.row--empty').removeClass('row--empty');
+	}
+	
+	
+	/**
+	 *	Reformat meridiems
+	 */
+	
+	function formatClassTimes() {
+		var times = document.getElementsByClassName("class__times");
+		
+		for (var i=0; i < times.length; i++) {
+			var text = times[i].innerHTML;
+			var timeAlpha = text.split("-")[0];
+			var timeOmega = text.split("-")[1];
+			var meridiemAlpha = timeAlpha.split("am")[1] === "" ? "am" : "pm";
+			var meridiemOmega = timeOmega.split("am")[1] === "" ? "am" : "pm";
+			
+			var formattedTime =
+				meridiemAlpha === meridiemOmega ?
+				timeAlpha.split(meridiemAlpha)[0] + "-" + timeOmega :
+				timeAlpha + "-" + timeOmega;
+			
+			times[i].innerHTML = formattedTime;
+		}
 	}
 	
 	
@@ -443,8 +449,8 @@ function createDanceSchedule() {
 			panelId = "#" + dayName;
 			$(panelId).html(buildSchedule(dayArray));
 		}
-		formatClassTimes();
 		trimEmptyRows();
+		formatClassTimes();
 	})();
 	
 	
@@ -526,7 +532,7 @@ function createMobileTabs() {
 		
 		$('.schedule__wrapper').each(function(){
 			
-			var $cells = $('td').not('.cell__index, .cell__heading, .cell__heading--blank');
+			var $cells = $('td').not('.cell__index, .cell__heading, .cell__heading--blank, .cell__spacer');
 			var $arrows = $('.studio__arrow');
 			var studios = [
 				$cells.filter($('[data-studio="a"]')),
