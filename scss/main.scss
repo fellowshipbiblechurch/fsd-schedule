@@ -1,10 +1,11 @@
 /* # Base Styles
 ================================================== */
 
-@import 'variables',
-				'mixins',
-				'functions',
-				'animations';
+@import
+	'variables',
+	'mixins',
+	'functions',
+	'animations';
 
 .schedule {
 	
@@ -34,11 +35,11 @@
 		text-align: center;
 		text-transform: uppercase;
 		box-sizing: border-box;
-	  -webkit-touch-callout: none; /* iOS Safari */
-	  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-	  -moz-user-select: none;      /* Firefox */
-	  -ms-user-select: none;       /* IE/Edge */
-	  user-select: none;
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none;   /* Chrome/Safari/Opera */
+		-moz-user-select: none;      /* Firefox */
+		-ms-user-select: none;       /* IE/Edge */
+		user-select: none;
 		
 		.day {
 			&__prev,
