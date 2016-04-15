@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-css": "node-sass --output-style compressed --include-path scss scss/main.scss dist/public/css/fsd-schedule.min.css",
-    "minify-js": "uglifyjs scripts/app.js -o dist/public/js/fsd-schedule.min.js",
+    "build-css": "node-sass --output-style compressed --include-path scss scss/main.scss dist/css/fsd-schedule.min.css",
+    "minify-js": "uglifyjs scripts/app.js -o dist/js/fsd-schedule.min.js",
     "watch": "nodemon --watch scss --watch scripts -e scss,js -x \"npm run build-css && npm run minify-js\"",
     "build": "npm run watch"
   },
