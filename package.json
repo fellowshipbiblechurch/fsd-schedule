@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-css": "node-sass --output-style compressed --include-path scss scss/main.scss dist/css/fsd-schedule.min.css",
-    "minify-js": "uglifyjs scripts/app.js -o dist/js/fsd-schedule.min.js",
-    "watch": "nodemon --watch scss --watch scripts -e scss,js -x \"npm run build-css && npm run minify-js\"",
-    "build": "npm run watch"
+    "build-css":		"node-sass --output-style compressed --include-path scss scss/main.scss dist/css/fsd-schedule.min.css",
+    "minify-js":		"uglifyjs scripts/app.js -o dist/js/fsd-schedule.min.js",
+    "beautify-js":	"js-beautify -t -f scripts/app.js -o dist/js/fsd-schedule.min.js",
+    "watch":				"nodemon --watch scss --watch scripts -e scss,js -x \"npm run build-css && npm run beautify-js\"",
+    "build":				"npm run watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "js-beautify": "^1.6.3",
     "node-sass": "^3.4.2",
     "nodemon": "^1.9.1",
     "uglify-js": "^2.6.2"

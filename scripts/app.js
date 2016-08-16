@@ -9,14 +9,6 @@ $(document).ready(function(){
 		createMobileTabs();
 	}
 	
-/*
-	$(window).resize(function(){
-		if ($(window).width() > 768) {
-			createDanceSchedule();
-			createMobileTabs();
-		}
-	});
-*/
 });
 
 
@@ -35,19 +27,24 @@ function createDanceSchedule() {
 		this.studio = studio;
 		this.title = title;
 		this.link = link;
-		this.times =
-		{
-			alpha: { hour: alphaHour, minute: alphaMinute },
-			omega: { hour: omegaHour, minute: omegaMinute }
+		this.times = {
+			alpha: {
+				hour: alphaHour,
+				minute: alphaMinute
+			},
+			omega: {
+				hour: omegaHour,
+				minute: omegaMinute
+			}
 		};
 		this.alphaMinutesFull = function() {
-			return alphaHour*60 + alphaMinute;
+			return alphaHour * 60 + alphaMinute;
 		};
 		this.omegaMinutesFull = function() {
-			return omegaHour*60 + omegaMinute;
+			return omegaHour * 60 + omegaMinute;
 		};
 		this.duration = function() {
-			return ((omegaHour*60 + omegaMinute) - (alphaHour*60 + alphaMinute))/15;
+			return ((omegaHour * 60 + omegaMinute) - (alphaHour * 60 + alphaMinute)) / 15;
 		}
 	}
 	
@@ -58,8 +55,8 @@ function createDanceSchedule() {
 		new danceClass("Monday", "A", "Pointe II/III", "/ballet", 17, 30, 18, 15),
 		new danceClass("Monday", "A", "Contemporary IV", "/contemporary", 18, 15, 19, 30),
 		new danceClass("Monday", "A", "Contemporary III", "/contemporary", 19, 30, 20, 45),
-		new danceClass("Monday", "B", "Intro to Ballet I", "/ballet", 16, 15, 17, 15),
-		new danceClass("Monday", "B", "Contemporary I A", "/contemporary", 17, 15, 18, 15),
+		new danceClass("Monday", "B", "Contemporary I A", "/contemporary", 16, 15, 17, 15),
+		new danceClass("Monday", "B", "Intro to Ballet I", "/ballet", 17, 15, 18, 15),
 		new danceClass("Monday", "B", "Ballet II", "/ballet", 18, 15, 19, 45),
 		new danceClass("Monday", "B", "Pre-Pointe", "/ballet", 19, 45, 20, 30),
 		new danceClass("Monday", "C", "Intro to Ballet II", "/ballet", 16, 15, 17, 15),
@@ -80,7 +77,8 @@ function createDanceSchedule() {
 		new danceClass("Tuesday", "B", "Tap III", "/tap", 19, 15, 20, 15),
 		new danceClass("Tuesday", "C", "Intro to Ballet", "/ballet", 16, 0, 17, 0),
 		new danceClass("Tuesday", "C", "Ballet I A", "/ballet", 17, 0, 18, 15),
-		new danceClass("Tuesday", "C", "Lyrical Worship (Ages 8-12)", "/lyrical", 18, 15, 19, 15)
+		new danceClass("Tuesday", "C", "Lyrical Worship (Ages 8-12)", "/lyrical", 18, 15, 19, 15),
+		new danceClass("Tuesday", "C", "Hip Hop II", "/hip-hop", 19, 15, 20, 15)
 	];
 	
 	var wednesday = [
@@ -96,8 +94,7 @@ function createDanceSchedule() {
 		new danceClass("Wednesday", "C", "Creative Movement", "/creative-movement", 14, 0, 15, 0),
 		new danceClass("Wednesday", "C", "Inside Out: Teen", "/special-needs", 15, 30, 16, 15),
 		new danceClass("Wednesday", "C", "Inside Out: Elementary", "/special-needs", 16, 30, 17, 0),
-		new danceClass("Wednesday", "C", "Hip-Hop IV", "/hip-hop", 17, 0, 18, 0),
-		new danceClass("Wednesday", "C", "Hip-Hop II", "/hip-hop", 18, 0, 19, 0)
+		new danceClass("Wednesday", "C", "Hip-Hop IV", "/hip-hop", 17, 0, 18, 0)
 	];
 	
 	var thursday = [
