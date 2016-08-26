@@ -48,7 +48,11 @@ function createDanceSchedule() {
 		}
 	}
 	
-	// object of week holding class listings
+	
+	/**
+	 *	THIS IS WHERE YOU EDIT CLASSES
+	 */
+	 
 	
 	var monday = [
 		new danceClass("Monday", "A", "Ballet IV/V", "/ballet", 16, 0, 17, 30),
